@@ -10,6 +10,9 @@ android.defaultConfig.minSdkVersion AndroidConfig.minSdk
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(path: ':domain')
+
+    implementation Kotlin.standardLibrary
+
     implementation Android.appCompat
     implementation Android.constraintLayout
     implementation Android.cardView

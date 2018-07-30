@@ -5,6 +5,8 @@ android.compileSdkVersion AndroidConfig.compileSdk
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    implementation Kotlin.standardLibrary
+
     implementation Android.appCompat
     testImplementation UnitTest.jUnit
     androidTestImplementation AndroidTest.runner

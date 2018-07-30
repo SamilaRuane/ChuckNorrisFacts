@@ -4,8 +4,11 @@ android.compileSdkVersion AndroidConfig.compileSdk
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation Android.appCompat
+
+    implementation Kotlin.standardLibrary
+
     implementation Retrofit.base
     implementation Retrofit.callAdapter
     implementation Retrofit.gsonConverter
+    implementation Retrofit.logging
 }
