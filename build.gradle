@@ -26,8 +26,16 @@ allprojects {
     }
 }
 
+apply plugin: 'org.jmailen.kotlinter'
+subprojects {
+    apply plugin: 'org.jmailen.kotlinter'
+
+    kotlinter {
+        indentSize = 4
+        continuationIndentSize = 4
+    }
+}
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-
-apply plugin: 'org.jmailen.kotlinter'
