@@ -1,0 +1,11 @@
+apply plugin: 'com.android.library'
+
+android.compileSdkVersion AndroidConfig.compileSdk
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation Android.appCompat
+    implementation Retrofit.base
+    implementation Retrofit.callAdapter
+    implementation Retrofit.gsonConverter
+}
