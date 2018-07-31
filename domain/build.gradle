@@ -7,6 +7,6 @@ dependencies {
     implementation Rx.java
     implementation Rx.kotlin
 
-    implementation UnitTest.jUnit
-    implementation UnitTest.mockito
+    testImplementation UnitTest.jUnit
+    testImplementation UnitTest.mockito
 }
