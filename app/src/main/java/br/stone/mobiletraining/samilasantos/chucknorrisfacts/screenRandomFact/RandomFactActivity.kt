@@ -30,7 +30,5 @@ class RandomFactActivity : AppCompatActivity() {
             .subscribe { }
     }
 
-    private fun setupView() {
-
-    }
+    private fun setupView() {}
 }
