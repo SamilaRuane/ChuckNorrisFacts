@@ -1,0 +1,17 @@
+apply plugin: 'com.android.library'
+
+android.compileSdkVersion AndroidConfig.compileSdk
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project (':domain')
+
+    implementation Kotlin.standardLibrary
+
+    implementation Android.appCompat
+    testImplementation UnitTest.jUnit
+    androidTestImplementation AndroidTest.runner
+    androidTestImplementation AndroidTest.espresso
+    androidTestImplementation AndroidTest.espressoContrib
+    androidTestImplementation AndroidTest.espressoIntents
+}
