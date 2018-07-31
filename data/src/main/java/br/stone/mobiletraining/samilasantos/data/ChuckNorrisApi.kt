@@ -6,5 +6,5 @@ import retrofit2.http.GET
 interface ChuckNorrisApi {
 
     @GET("jokes/random")
-    fun getRandomFact () : Observable<Fact>
+    fun getRandomFact(): Observable<Fact>
 }

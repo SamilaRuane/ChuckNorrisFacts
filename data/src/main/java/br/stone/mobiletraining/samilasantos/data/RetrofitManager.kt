@@ -7,7 +7,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitManager {
-    fun chuckNorrisFactsService (): ChuckNorrisApi {
+    fun chuckNorrisFactsService(): ChuckNorrisApi {
         val logging = HttpLoggingInterceptor()
         logging.level = HttpLoggingInterceptor.Level.BODY
         val httpClient =
@@ -23,7 +23,6 @@ object RetrofitManager {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        return service.create(ChuckNorrisApi :: class.java)
-
+        return service.create(ChuckNorrisApi::class.java)
     }
 }

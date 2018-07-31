@@ -21,7 +21,5 @@ class MainActivity : AppCompatActivity() {
             .subscribe {
                 txt_hello.text = it.value
             }
-
-
     }
 }
