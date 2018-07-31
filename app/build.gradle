@@ -24,6 +24,7 @@ dependencies {
     implementation Rx.kotlin
 
     testImplementation UnitTest.jUnit
+    testImplementation UnitTest.mockito
     androidTestImplementation AndroidTest.runner
     androidTestImplementation AndroidTest.espresso
     androidTestImplementation AndroidTest.espressoIntents
