@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlin_version = '1.2.30'
+    ext.kotlin_version = '1.2.51'
     repositories {
         google()
         jcenter()
@@ -35,7 +35,7 @@ subprojects {
         indentSize = 4
         continuationIndentSize = 4
     }
-    if (this.name == 'app' || this.name == 'data' || this.name == "appcommon") {
+   /* if (this.name == 'app' || this.name == 'data' || this.name == "appcommon") {
         apply plugin: 'com.android.application'
 
         android {
@@ -58,7 +58,7 @@ subprojects {
                 proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             }
         }
-    }
+    }*/
 }
 
 task clean(type: Delete) {

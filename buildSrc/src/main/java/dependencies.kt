@@ -7,7 +7,7 @@
  * */
 
 
-const val KOTLIN_VERSION = "1.2.30"
+const val KOTLIN_VERSION = "1.2.51"
 const val SUPPORT_LIBRARY_VERSION = "27.1.1"
 const val CONSTRAINT_LAYOUT_VERSION = "1.1.2"
 const val RX_KOTLIN_VERSION = "2.2.0"
@@ -23,7 +23,7 @@ const val RETROFIT_VERSION = "2.4.0"
 const val LOGGING_VERSION = "3.10.0"
 
 object Kotlin {
-    val standardLibrary = "org.jetbrains.kotlin:kotlin-stdlib-jre7:$KOTLIN_VERSION"
+    val standardLibrary = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$KOTLIN_VERSION"
 }
 
 object Android {

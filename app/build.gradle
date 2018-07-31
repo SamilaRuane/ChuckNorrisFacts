@@ -4,12 +4,29 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
-android.compileSdkVersion AndroidConfig.compileSdk
-android.defaultConfig.minSdkVersion AndroidConfig.minSdk
+android {
+    compileSdkVersion AndroidConfig.compileSdk
+    defaultConfig {
+        applicationId AndroidConfig.applicationId
+        minSdkVersion AndroidConfig.minSdk
+        targetSdkVersion AndroidConfig.targetSdk
+        versionCode Version.code
+        versionName Version.name
+        testInstrumentationRunner AndroidConfig.defaultTestRunner
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(path: ':domain')
+    implementation project(':domain')
+    implementation project(':data')
 
     implementation Kotlin.standardLibrary
 
@@ -17,6 +34,10 @@ dependencies {
     implementation Android.constraintLayout
     implementation Android.cardView
     implementation Android.recyclerView
+
+    implementation Rx.binding
+    implementation Rx.java
+    implementation Rx.kotlin
 
     testImplementation UnitTest.jUnit
     androidTestImplementation AndroidTest.runner

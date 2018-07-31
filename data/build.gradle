@@ -1,11 +1,18 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+
 
 android.compileSdkVersion AndroidConfig.compileSdk
-
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    implementation project(':domain')
+
     implementation Kotlin.standardLibrary
+
+    implementation Rx.java
+    implementation Rx.kotlin
 
     implementation Retrofit.base
     implementation Retrofit.callAdapter

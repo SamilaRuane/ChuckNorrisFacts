@@ -4,6 +4,7 @@ android.compileSdkVersion AndroidConfig.compileSdk
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project (':domain')
 
     implementation Kotlin.standardLibrary
 

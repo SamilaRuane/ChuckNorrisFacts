@@ -3,4 +3,7 @@ apply plugin: 'kotlin'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation Kotlin.standardLibrary
+
+    implementation Rx.java
+    implementation Rx.kotlin
 }
