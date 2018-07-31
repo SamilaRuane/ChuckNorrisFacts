@@ -2,10 +2,8 @@ package br.stone.mobiletraining.samilasantos.chucknorrisfacts.screenRandomFact
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.View
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.R
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.di.diInject
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_random_fact.*
 
