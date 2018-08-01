@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">ChuckNorrisFacts</string>
+    <string name="app_name">Chuck Norris Facts</string>
+    <string name="chuck_norris_name">Chuck Norris</string>
+    <string name="quote_description">Quote</string>
+    <string name="search_description">Search</string>
+    <string name="share_description">Share</string>
+    <string name="update_description">Update</string>
+    <string name="chuck_norris_description">I am your father</string>
+    <string name="placeholder_fact">Chuck Norris was once so drunk that he tripped and the ejecta that was launched into outer space formed the moon.</string>
 </resources>
