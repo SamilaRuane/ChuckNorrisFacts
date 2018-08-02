@@ -4,6 +4,7 @@ import br.stone.mobiletraining.samilasantos.domain.randomFact.RandomFactResult
 import br.stone.mobiletraining.samilasantos.domain.randomFact.uc.GetRandomFact
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
+import java.util.concurrent.TimeUnit
 
 class RandomFactViewModel(private val getRandomFact: GetRandomFact) {
 
@@ -14,7 +15,8 @@ class RandomFactViewModel(private val getRandomFact: GetRandomFact) {
     }
 
     fun observeState(): Observable<RandomFactContract.ViewState> = updateIntentObservable
-        .flatMap {
+        .throttleFirst(500, TimeUnit.MILLISECONDS)
+        .switchMap {
             getRandomFact.execute()
                 .map {
                     when (it) {
