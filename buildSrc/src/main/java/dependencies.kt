@@ -21,6 +21,7 @@ const val MOCKITO_VERSION = "0.9.0"
 const val TEST_RULES_VERSION = "1.0.2"
 const val RETROFIT_VERSION = "2.4.0"
 const val LOGGING_VERSION = "3.10.0"
+const val KODEIN_VERSION = "4.1.0"
 
 object Kotlin {
     val standardLibrary = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$KOTLIN_VERSION"
@@ -58,4 +59,9 @@ object AndroidTest {
 object UnitTest {
     val jUnit = "junit:junit:$JUNIT_VERSION"
     val mockito = "com.nhaarman:mockito-kotlin:$MOCKITO_VERSION"
+}
+
+object Kodein {
+    val base = "com.github.salomonbrys.kodein:kodein:$KODEIN_VERSION"
+    val conf = "com.github.salomonbrys.kodein:kodein-conf:$KODEIN_VERSION"
 }

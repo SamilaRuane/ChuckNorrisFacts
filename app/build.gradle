@@ -23,6 +23,9 @@ dependencies {
     implementation Rx.java
     implementation Rx.kotlin
 
+    implementation Kodein.base
+    implementation Kodein.conf
+
     testImplementation UnitTest.jUnit
     testImplementation UnitTest.mockito
     androidTestImplementation AndroidTest.runner
