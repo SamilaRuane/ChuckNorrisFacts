@@ -58,6 +58,6 @@ class RandomFactActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
-        if (!disposable.isDisposed) disposable.dispose()
+        disposable.dispose()
     }
 }

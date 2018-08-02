@@ -6,6 +6,7 @@ import br.stone.mobiletraining.samilasantos.chucknorrisfacts.App
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.screenRandomFact.RandomFactViewModel
 import br.stone.mobiletraining.samilasantos.data.RepositoryMock
 import br.stone.mobiletraining.samilasantos.domain.randomFact.RandomFactRepository
+import br.stone.mobiletraining.samilasantos.domain.randomFact.uc.GetRandomFact
 import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.conf.ConfigurableKodein
@@ -38,8 +39,12 @@ class Injector(private val application: Application) {
                 RandomFactViewModel(instance())
             }
 
-            bind <RandomFactRepository>() with singleton {
+            bind<RandomFactRepository>() with singleton {
                 RepositoryMock()
+            }
+
+            bind<GetRandomFact>() with provider {
+                GetRandomFact(instance())
             }
         }
     }
