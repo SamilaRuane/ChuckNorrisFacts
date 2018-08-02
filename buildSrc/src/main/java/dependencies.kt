@@ -17,7 +17,7 @@ const val RX_BINDING_VERSION = "2.1.1"
 const val JUNIT_VERSION = "4.12"
 const val TEST_RUNNER_VERSION = "1.0.2"
 const val ESPRESSO_VERSION = "3.0.2"
-const val MOCKITO_VERSION = "1.9.5"
+const val MOCKITO_VERSION = "0.9.0"
 const val TEST_RULES_VERSION = "1.0.2"
 const val RETROFIT_VERSION = "2.4.0"
 const val LOGGING_VERSION = "3.10.0"
@@ -57,5 +57,5 @@ object AndroidTest {
 
 object UnitTest {
     val jUnit = "junit:junit:$JUNIT_VERSION"
-    val mockito = "org.mockito:mockito-all:$MOCKITO_VERSION"
+    val mockito = "com.nhaarman:mockito-kotlin:$MOCKITO_VERSION"
 }
