@@ -13,10 +13,10 @@ class HandleHttpErrors<T> : SingleTransformer<T, T> {
         return upstream.onErrorResumeNext(this::handleIfRestError)
     }
 
-    private fun handleIfRestError(incoming: Throwable): Single<T> {
+    private fun handleIfRestError(incoming: Throwable): Single<T> =
         if (incoming is HttpException) toInfrastructureError(incoming)
-        return Single.error(incoming)
-    }
+        else Single.error(incoming)
+
 
     private fun toInfrastructureError(restError: HttpException): Single<T> {
         val infraError = mapErrorWith(restError.code())
@@ -26,7 +26,7 @@ class HandleHttpErrors<T> : SingleTransformer<T, T> {
     private fun mapErrorWith(code: Int) = when (code) {
         404 -> RandomFactExceptions.FactNotFound
         in 400..499 -> RandomFactExceptions.FactNotFound
-        in 500..509 -> IntegrationExceptions.UnavailableProvider
+        in 500..511 -> IntegrationExceptions.UnavailableProvider
         else -> RandomFactExceptions.FactNotFound
     }
 }
