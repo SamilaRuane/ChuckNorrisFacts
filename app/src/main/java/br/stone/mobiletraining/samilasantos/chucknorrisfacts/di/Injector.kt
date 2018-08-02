@@ -10,8 +10,8 @@ import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.conf.ConfigurableKodein
 import com.github.salomonbrys.kodein.instance
-import com.github.salomonbrys.kodein.singleton
 import com.github.salomonbrys.kodein.provider
+import com.github.salomonbrys.kodein.singleton
 
 class Injector(private val application: Application) {
 
@@ -39,7 +39,15 @@ class Injector(private val application: Application) {
             }
 
             bind<RandomFactRepository>() with singleton {
-                RepositoryMock()
+                ChuckNorrisService(instance())
+            }
+
+            bind<String>() with singleton {
+                "https://api.chucknorris.io/"
+            }
+
+            bind<ChuckNorrisApi>() with singleton {
+                RetrofitManager.chuckNorrisFactsApi(instance())
             }
 
             bind<GetRandomFact>() with provider {
