@@ -10,6 +10,9 @@ import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_random_fact.icon_update
 import kotlinx.android.synthetic.main.activity_random_fact.progress_loading
 import kotlinx.android.synthetic.main.activity_random_fact.text_fact
+import kotlinx.android.synthetic.main.activity_random_fact.icon_update
+import kotlinx.android.synthetic.main.activity_random_fact.progress_loading
+import kotlinx.android.synthetic.main.activity_random_fact.text_fact
 
 class RandomFactActivity : AppCompatActivity() {
 
