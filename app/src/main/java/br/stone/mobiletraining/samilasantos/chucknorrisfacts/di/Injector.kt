@@ -4,6 +4,9 @@ import android.app.Activity
 import android.app.Application
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.App
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.screenRandomFact.RandomFactViewModel
+import br.stone.mobiletraining.samilasantos.data.service.common.ChuckNorrisApi
+import br.stone.mobiletraining.samilasantos.data.service.common.ChuckNorrisService
+import br.stone.mobiletraining.samilasantos.data.service.common.RetrofitManager
 import br.stone.mobiletraining.samilasantos.domain.randomFact.RandomFactRepository
 import br.stone.mobiletraining.samilasantos.domain.randomFact.uc.GetRandomFact
 import com.github.salomonbrys.kodein.Kodein
