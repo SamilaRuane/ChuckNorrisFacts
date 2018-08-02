@@ -1,16 +1,17 @@
 package br.stone.mobiletraining.samilasantos.domain.randomFact
 
-import br.stone.mobiletraining.samilasantos.domain.common.IntegrationErrors
+import br.stone.mobiletraining.samilasantos.domain.common.IntegrationExceptions
 import br.stone.mobiletraining.samilasantos.domain.common.NetworkIssues
 import br.stone.mobiletraining.samilasantos.domain.randomFact.RandomFactMother.repository
 import br.stone.mobiletraining.samilasantos.domain.randomFact.uc.GetRandomFact
+import br.stone.mobiletraining.samilasantos.domain.randomFact.uc.RandomFactExceptions
 import org.junit.Test
 
 class RandomFactTest {
 
     @Test
-    fun shouldReturnANoNetworkError() {
-        RandomFactMother.WithANoNetworkError {
+    fun `given a no network error, GetRandomFact should return an error`() {
+        RandomFactMother.withANoNetworkError {
             val ts = GetRandomFact(repository)
                 .execute().test()
             ts.awaitTerminalEvent()
@@ -20,8 +21,8 @@ class RandomFactTest {
     }
 
     @Test
-    fun shouldReturnATimeoutError() {
-        RandomFactMother.WithATimeoutError {
+    fun `given a timeout error, GetRandomFact should return an error`() {
+        RandomFactMother.withATimeoutError {
             val ts = GetRandomFact(repository)
                 .execute().test()
             ts.awaitTerminalEvent()
@@ -31,40 +32,40 @@ class RandomFactTest {
     }
 
     @Test
-    fun shouldReturnAFactNotFoundError() {
-        RandomFactMother.WithAFactNotFoundError {
+    fun `given a fact not found error, GetRandomFact should return an error`() {
+        RandomFactMother.withAFactNotFoundError {
             val ts = GetRandomFact(repository)
                 .execute().test()
             ts.awaitTerminalEvent()
             ts.assertValue { it is RandomFactResult.Error }
-            ts.assertValue { (it as RandomFactResult.Error).error == IntegrationErrors.FactNotFound }
+            ts.assertValue { (it as RandomFactResult.Error).error == RandomFactExceptions.FactNotFound }
         }
     }
 
     @Test
-    fun shouldReturnAUnexpectedDataError() {
-        RandomFactMother.WithAUnexpectedDataError {
+    fun `given an unexpected data error, GetRandomFact should return an error`() {
+        RandomFactMother.withAUnexpectedDataError {
             val ts = GetRandomFact(repository)
                 .execute().test()
             ts.awaitTerminalEvent()
             ts.assertValue { it is RandomFactResult.Error }
-            ts.assertValue { (it as RandomFactResult.Error).error == IntegrationErrors.UnexpectedData }
+            ts.assertValue { (it as RandomFactResult.Error).error == IntegrationExceptions.UnexpectedData }
         }
     }
 
     @Test
-    fun shouldReturnAUnavailableProviderError() {
-        RandomFactMother.WithAUnavailableProviderError {
+    fun `given a unavailable provider error, GetRandomFact should return an error`() {
+        RandomFactMother.withAUnavailableProviderError {
             val ts = GetRandomFact(repository)
                 .execute().test()
             ts.awaitTerminalEvent()
             ts.assertValue { it is RandomFactResult.Error }
-            ts.assertValue { (it as RandomFactResult.Error).error == IntegrationErrors.UnavailableProvider }
+            ts.assertValue { (it as RandomFactResult.Error).error == IntegrationExceptions.UnavailableProvider }
         }
     }
 
     @Test
-    fun shouldReturnSuccess() {
+    fun `given success scenario, GetRandomFact should return success`() {
         RandomFactMother.withASuccessScenario {
             val ts = GetRandomFact(repository)
                 .execute().test()
