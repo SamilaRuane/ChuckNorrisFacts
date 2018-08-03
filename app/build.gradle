@@ -29,6 +29,7 @@ dependencies {
 
     implementation Retrofit.base
 
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     testImplementation UnitTest.jUnit
     testImplementation UnitTest.mockito
     androidTestImplementation AndroidTest.runner
