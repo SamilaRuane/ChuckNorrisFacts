@@ -11,7 +11,7 @@ import br.stone.mobiletraining.samilasantos.domain.common.NetworkIssues
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_random_fact.icon_update
-import kotlinx.android.synthetic.main.activity_random_fact.progress_loading
+import kotlinx.android.synthetic.main.activity_random_fact.progress_loading_fact
 import kotlinx.android.synthetic.main.activity_random_fact.text_fact
 
 class RandomFactActivity : AppCompatActivity() {
@@ -58,6 +58,10 @@ class RandomFactActivity : AppCompatActivity() {
                         errorState()
                         showDialogUnavailableProvider()
                     }
+                    is IntegrationExceptions.UnexpectedData -> {
+                        errorState()
+                        showDialogUnexpectedData()
+                    }
                     else -> errorState()
                 }
             }
@@ -67,19 +71,19 @@ class RandomFactActivity : AppCompatActivity() {
     }
 
     private fun successState(fact: String) {
-        progress_loading.visibility = View.GONE
+        progress_loading_fact.visibility = View.GONE
         text_fact.visibility = View.VISIBLE
         text_fact.text = fact
     }
 
     private fun errorState() {
-        progress_loading.visibility = View.GONE
+        progress_loading_fact.visibility = View.GONE
         text_fact.visibility = View.VISIBLE
     }
 
     private fun loadingState() {
         text_fact.visibility = View.INVISIBLE
-        progress_loading.visibility = View.VISIBLE
+        progress_loading_fact.visibility = View.VISIBLE
     }
 
     private fun showDialogNoNetwork() {
@@ -104,6 +108,14 @@ class RandomFactActivity : AppCompatActivity() {
             positiveButton = getString(R.string.ok_button),
             negativeButton = "",
             listener = { dialog, _ -> dialog.dismiss() }).show()
+    }
+
+    private fun showDialogUnexpectedData() {
+        dialog(
+            msg = getString(R.string.unexpected_data_message),
+            positiveButton = getString(R.string.ok_button),
+            negativeButton = ""
+        ).show()
     }
 
     override fun onStop() {

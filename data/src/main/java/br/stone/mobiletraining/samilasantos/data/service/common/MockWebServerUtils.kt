@@ -1,4 +1,4 @@
-package br.stone.mobiletraining.samilasantos.data.service
+package br.stone.mobiletraining.samilasantos.data.service.common
 
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
@@ -9,19 +9,25 @@ object MockWebServerUtils {
         errorCode: Int,
         testBody: MockWebServer.(baseUrl: String) -> Unit
     ) =
-        runWithMockServer({
-            enqueue(
-                MockResponse()
-                    .setResponseCode(errorCode)
-            )
-        }, testBody)
+        runWithMockServer(
+            {
+                enqueue(
+                    MockResponse()
+                        .setResponseCode(errorCode)
+                )
+            },
+            testBody
+        )
 
     fun runWithMockServerOkResponse(
         body: String,
         returnCode: Int = 200,
         testBody: MockWebServer.(baseUrl: String) -> Unit
     ) =
-        runWithMockServer({ enqueueOkResponse(body, returnCode) }, testBody)
+        runWithMockServer(
+            { enqueueOkResponse(body, returnCode) },
+            testBody
+        )
 
     private fun runWithMockServer(
         enqueueBody: MockWebServer.() -> Unit,

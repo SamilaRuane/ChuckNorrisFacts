@@ -7,6 +7,7 @@
     tools:context=".screenRandomFact.RandomFactActivity">
 
     <LinearLayout
+        android:id="@+id/linear_header"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/color_light"
@@ -15,6 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/image_chuck"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/color_light"
@@ -65,7 +67,7 @@
         app:layout_constraintTop_toBottomOf="@+id/text_fact" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/text_chuck_norris_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -76,6 +78,7 @@
         app:layout_constraintTop_toBottomOf="@+id/view_separator" />
 
     <ImageView
+        android:id="@+id/quote_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -98,7 +101,7 @@
         app:layout_constraintEnd_toEndOf="@+id/icon_search"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/text_chuck_norris_name"
         app:layout_constraintVertical_bias="0.385" />
 
     <ImageView
@@ -115,7 +118,7 @@
         app:layout_constraintEnd_toEndOf="@+id/icon_share"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="@+id/icon_update"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/text_chuck_norris_name"
         app:layout_constraintVertical_bias="0.385" />
 
 
@@ -133,11 +136,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="@+id/icon_search"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/text_chuck_norris_name"
         app:layout_constraintVertical_bias="0.385" />
 
     <ProgressBar
-        android:id="@+id/progress_loading"
+        android:id="@+id/progress_loading_fact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
