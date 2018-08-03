@@ -9,7 +9,7 @@ class RetrofitFactRepositoryTest {
 
     @Test
     fun `given a fact not found error, RetrofitFactRepository should return a FactNotFound object `() {
-        CommonMother.runWithError(404) {
+        FactMother.runWithError(404) {
             val ts = getFact().test()
             ts.awaitTerminalEvent()
             ts.assertError(RandomFactExceptions.FactNotFound)
@@ -18,7 +18,7 @@ class RetrofitFactRepositoryTest {
 
     @Test
     fun `given a server error, RetrofitFactRepository should return an UnavailableProvider object `() {
-        CommonMother.runWithError(500) {
+        FactMother.runWithError(500) {
             val ts = getFact().test()
 
             ts.awaitTerminalEvent()
@@ -38,18 +38,18 @@ class RetrofitFactRepositoryTest {
 
     @Test
     fun `given an Ok response, RetrofitFactRepository should return Success`() {
-        CommonMother.runWithSuccess(CommonMother.successbody) {
+        FactMother.runWithSuccess(FactMother.successbody) {
             val ts = getFact().test()
 
             ts.awaitTerminalEvent()
 
-            ts.assertValue { it.id == CommonMother.succesBodyId }
+            ts.assertValue { it.id == FactMother.successBodyId }
         }
     }
 
     @Test
     fun `given a Ok response with a malformed body, RetrofitFactRepository should return an UnexpectedData object`() {
-        CommonMother.runWithSuccess(CommonMother.malFormedBody) {
+        FactMother.runWithSuccess(FactMother.malFormedBody) {
             val ts = getFact().test()
 
             ts.awaitTerminalEvent()

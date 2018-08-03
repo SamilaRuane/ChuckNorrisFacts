@@ -2,9 +2,9 @@ package br.stone.mobiletraining.samilasantos.data.service.common
 
 import br.stone.mobiletraining.samilasantos.data.service.MockWebServerUtils
 
-object CommonMother {
+object FactMother {
 
-    val succesBodyId = "0PlGg24YSX--haND5nj4Tw"
+    val successBodyId = "0PlGg24YSX--haND5nj4Tw"
     val successbody = """
         {
            "category":null,
