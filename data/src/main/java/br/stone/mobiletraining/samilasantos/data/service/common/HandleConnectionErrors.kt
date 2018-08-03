@@ -4,7 +4,7 @@ import br.stone.mobiletraining.samilasantos.domain.common.NetworkIssues
 import io.reactivex.Single
 import io.reactivex.SingleSource
 import io.reactivex.SingleTransformer
-import java.net.SocketTimeoutException
+import java.net.ConnectException
 import java.net.UnknownHostException
 
 class HandleConnectionErrors<T> : SingleTransformer<T, T> {
@@ -27,7 +27,7 @@ class HandleConnectionErrors<T> : SingleTransformer<T, T> {
     private fun isNetworkError(error: Throwable) =
         isConnectionTimeout(error) || noInternetAvailable(error)
 
-    private fun isConnectionTimeout(error: Throwable) = error is SocketTimeoutException
+    private fun isConnectionTimeout(error: Throwable) = error is ConnectException
 
     private fun noInternetAvailable(error: Throwable) = error is UnknownHostException
 }

@@ -49,7 +49,10 @@ class RandomFactActivity : AppCompatActivity() {
                         dialog(msg = getString(R.string.no_network_message),
                             positiveButton = getString(R.string.retry_button),
                             negativeButton = getString(R.string.cancel_button),
-                            listener = { dialog, _ -> dialog.dismiss() }).show()
+                            listener = { dialog, _ ->
+                                dialog.dismiss()
+                                viewModel.handleUpdateClick()
+                            }).show()
                     }
                     is NetworkIssues.Timeout -> {
                         errorState()

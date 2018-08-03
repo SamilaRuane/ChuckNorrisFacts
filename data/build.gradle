@@ -18,6 +18,7 @@ dependencies {
     implementation Retrofit.callAdapter
     implementation Retrofit.gsonConverter
     implementation Retrofit.logging
+    implementation Retrofit.mockWebServer
 
     testImplementation UnitTest.jUnit
     androidTestImplementation AndroidTest.espresso

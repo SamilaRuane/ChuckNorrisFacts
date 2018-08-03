@@ -5,7 +5,7 @@ import br.stone.mobiletraining.samilasantos.domain.randomFact.uc.RandomFactExcep
 import io.reactivex.Single
 import io.reactivex.SingleSource
 import io.reactivex.SingleTransformer
-import retrofit2.HttpException
+import retrofit2.adapter.rxjava2.HttpException
 
 class HandleHttpErrors<T> : SingleTransformer<T, T> {
 
@@ -16,7 +16,6 @@ class HandleHttpErrors<T> : SingleTransformer<T, T> {
     private fun handleIfRestError(incoming: Throwable): Single<T> =
         if (incoming is HttpException) toInfrastructureError(incoming)
         else Single.error(incoming)
-
 
     private fun toInfrastructureError(restError: HttpException): Single<T> {
         val infraError = mapErrorWith(restError.code())
