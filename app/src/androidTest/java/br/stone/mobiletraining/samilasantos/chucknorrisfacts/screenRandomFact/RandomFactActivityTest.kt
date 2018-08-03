@@ -27,7 +27,7 @@ class RandomFactActivityTest {
         runWithLongTimeDurationRequest {
             launchActivity {
                 clickOnUpdateButton()
-                verifyIfTextMatches(RandomFactActivityMother.timeoutFeedback)
+                verifyIfTextMatches(RandomFactActivityMother.timeoutFeedback())
                 closeDialog()
             }
         }
@@ -38,7 +38,7 @@ class RandomFactActivityTest {
         runWithError(500) {
             launchActivity {
                 clickOnUpdateButton()
-                verifyIfTextMatches(RandomFactActivityMother.unavailableProviderFeedback)
+                verifyIfTextMatches(RandomFactActivityMother.unavailableProviderFeedback())
                 closeDialog()
             }
         }
@@ -49,7 +49,7 @@ class RandomFactActivityTest {
         runWithSuccess(RandomFactActivityMother.malFormedBody) {
             launchActivity {
                 clickOnUpdateButton()
-                verifyIfTextMatches(RandomFactActivityMother.unexpectedDataFeedback)
+                verifyIfTextMatches(RandomFactActivityMother.unexpectedDataFeedback())
                 closeDialog()
             }
         }

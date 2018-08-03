@@ -1,11 +1,15 @@
 package br.stone.mobiletraining.samilasantos.chucknorrisfacts.screenRandomFact
 
+import android.support.test.InstrumentationRegistry
+import br.stone.mobiletraining.samilasantos.chucknorrisfacts.R
+
 object RandomFactActivityMother {
-    const val timeoutFeedback: String = "Tempo excedido ao tentar recuperar as informações."
-    const val unavailableProviderFeedback: String =
-        "Ocorreu um erro ao conectar com o servidor. Tente novamente mais tarde."
-    const val unexpectedDataFeedback: String =
-        "Ocorreu um erro ao recuperar as informações. Tente novamente mais tarde."
+    val timeoutFeedback: () -> String = { getContext().getString(R.string.timeout_message) }
+    val unavailableProviderFeedback: () -> String =
+        { getContext().getString(R.string.unavailable_provider_message) }
+    val unexpectedDataFeedback: () -> String =
+        { getContext().getString(R.string.unexpected_data_message) }
+
     const val fact =
         "Chuck Norris ride into town on Friday, stayed three Nights, the rode out again on Friday. On a horse named Steve."
 
@@ -28,4 +32,6 @@ object RandomFactActivityMother {
            "value":"Chuck Norris ride into town on Friday, stayed three Nights, the rode out again on Friday. On a horse named Steve."
         }
     """.trimIndent()
+
+    private fun getContext() = InstrumentationRegistry.getTargetContext()
 }

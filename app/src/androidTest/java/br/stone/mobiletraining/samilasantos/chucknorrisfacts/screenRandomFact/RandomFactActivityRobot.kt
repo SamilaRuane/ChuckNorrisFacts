@@ -4,9 +4,9 @@ import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.action.ViewActions
 import android.support.test.espresso.action.ViewActions.click
 import android.support.test.espresso.assertion.ViewAssertions.matches
-import android.support.test.espresso.matcher.ViewMatchers.withText
-import android.support.test.espresso.matcher.ViewMatchers.withId
 import android.support.test.espresso.matcher.ViewMatchers.isDisplayed
+import android.support.test.espresso.matcher.ViewMatchers.withId
+import android.support.test.espresso.matcher.ViewMatchers.withText
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.R
 
 object RandomFactActivityRobot {
@@ -16,7 +16,7 @@ object RandomFactActivityRobot {
         onView(withId(R.id.text_fact)).check(matches(isDisplayed()))
     }
 
-    fun isHeaderVisible() = {
+    fun isHeaderVisible() {
         onView(withId(R.id.linear_header)).check(matches(isDisplayed()))
         onView(withId(R.id.image_chuck)).check(matches(isDisplayed()))
         onView(withId(R.id.text_chuck_norris_name)).check(matches(isDisplayed()))
@@ -36,7 +36,9 @@ object RandomFactActivityRobot {
         onView(withId(R.id.icon_share)).check(matches(isDisplayed()))
     }
 
-    fun clickOnUpdateButton() = onView(withId(R.id.icon_update)).perform(ViewActions.click())
+    fun clickOnUpdateButton() {
+        onView(withId(R.id.icon_update)).perform(ViewActions.click())
+    }
 
     fun verifyIfTextMatches(text: String) {
         onView(withText(text)).check(matches(isDisplayed()))
