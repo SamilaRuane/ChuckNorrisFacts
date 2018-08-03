@@ -37,13 +37,24 @@ class RetrofitFactRepositoryTest {
     }
 
     @Test
-    fun `given a Ok response, RetrofitFactRepository should return Success`() {
+    fun `given an Ok response, RetrofitFactRepository should return Success`() {
         CommonMother.runWithSuccess(CommonMother.successbody) {
             val ts = getFact().test()
 
             ts.awaitTerminalEvent()
 
             ts.assertValue { it.id == CommonMother.succesBodyId }
+        }
+    }
+
+    @Test
+    fun `given a Ok response with a malformed body, RetrofitFactRepository should return an UnexpectedData object`() {
+        CommonMother.runWithSuccess(CommonMother.malFormedBody) {
+            val ts = getFact().test()
+
+            ts.awaitTerminalEvent()
+
+            ts.assertError(IntegrationExceptions.UnexpectedData)
         }
     }
 }

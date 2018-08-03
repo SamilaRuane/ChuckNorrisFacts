@@ -15,6 +15,16 @@ object CommonMother {
         }
     """.trimIndent()
 
+    val malFormedBody = """
+        {[jdskjdsf
+           "category":null,
+           "icon_url":"https:\/\/assets.chucknorris.host\/img\/avatar\/chuck-norris.png",
+           "id":"0PlGg24YSX--haND5nj4Tw",
+           "url":"https:\/\/api.chucknorris.io\/jokes\/0PlGg24YSX--haND5nj4Tw",
+           "value":"Chuck Norris ride into town on Friday, stayed three Nights, the rode out again on Friday. On a horse named Steve."
+        }
+    """.trimIndent()
+
     fun runWithError(errorCode: Int, test: RetrofitFactRepository.() -> Unit) {
         MockWebServerUtils.runWithMockServerErrorResponse(errorCode) { baseUrl ->
             val retrofit = RetrofitManager.buildRetrofit(baseUrl)
