@@ -12,32 +12,32 @@ import br.stone.mobiletraining.samilasantos.chucknorrisfacts.R
 object RandomFactActivityRobot {
 
     fun isFactVisible() {
-        onView(withId(R.id.view_separator)).check(matches(isDisplayed()))
-        onView(withId(R.id.text_fact)).check(matches(isDisplayed()))
+        onView(withId(R.id.viewSeparator)).check(matches(isDisplayed()))
+        onView(withId(R.id.textFact)).check(matches(isDisplayed()))
     }
 
     fun isHeaderVisible() {
-        onView(withId(R.id.linear_header)).check(matches(isDisplayed()))
-        onView(withId(R.id.image_chuck)).check(matches(isDisplayed()))
-        onView(withId(R.id.text_chuck_norris_name)).check(matches(isDisplayed()))
-        onView(withId(R.id.quote_left)).check(matches(isDisplayed()))
-        onView(withId(R.id.quote_right)).check(matches(isDisplayed()))
+        onView(withId(R.id.linearHeader)).check(matches(isDisplayed()))
+        onView(withId(R.id.imageChuck)).check(matches(isDisplayed()))
+        onView(withId(R.id.textChuckNorrisName)).check(matches(isDisplayed()))
+        onView(withId(R.id.quoteLeft)).check(matches(isDisplayed()))
+        onView(withId(R.id.quoteRight)).check(matches(isDisplayed()))
     }
 
     fun isUpdateIconVisible() {
-        onView(withId(R.id.icon_search)).check(matches(isDisplayed()))
+        onView(withId(R.id.iconSearch)).check(matches(isDisplayed()))
     }
 
     fun isSearchIconVisible() {
-        onView(withId(R.id.icon_search)).check(matches(isDisplayed()))
+        onView(withId(R.id.iconSearch)).check(matches(isDisplayed()))
     }
 
     fun isShareIconVisible() {
-        onView(withId(R.id.icon_share)).check(matches(isDisplayed()))
+        onView(withId(R.id.iconShare)).check(matches(isDisplayed()))
     }
 
     fun clickOnUpdateButton() {
-        onView(withId(R.id.icon_update)).perform(ViewActions.click())
+        onView(withId(R.id.iconUpdate)).perform(ViewActions.click())
     }
 
     fun verifyIfTextMatches(text: String) {

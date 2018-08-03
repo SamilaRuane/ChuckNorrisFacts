@@ -7,39 +7,39 @@
     tools:context=".screenRandomFact.RandomFactActivity">
 
     <LinearLayout
-        android:id="@+id/linear_header"
+        android:id="@+id/linearHeader"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/color_light"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@id/quote_left"
+        app:layout_constraintBottom_toTopOf="@id/quoteLeft"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/image_chuck"
+            android:id="@+id/imageChuck"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/color_light"
             android:contentDescription="@string/chuck_norris_description"
             android:scaleType="fitEnd"
             android:src="@drawable/chuck_norris_image"
-            app:layout_constraintBottom_toTopOf="@id/quote_left"
+            app:layout_constraintBottom_toTopOf="@id/quoteLeft"
             app:layout_constraintTop_toTopOf="parent" />
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/quote_left"
+        android:id="@+id/quoteLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:contentDescription="@string/quote_description"
         android:src="@drawable/ic_quote"
-        app:layout_constraintBottom_toTopOf="@+id/text_fact"
+        app:layout_constraintBottom_toTopOf="@+id/textFact"
         app:layout_constraintStart_toStartOf="parent" />
 
 
     <TextView
-        android:id="@+id/text_fact"
+        android:id="@+id/textFact"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -57,17 +57,17 @@
         tools:targetApi="o" />
 
     <View
-        android:id="@+id/view_separator"
+        android:id="@+id/viewSeparator"
         android:layout_width="100dp"
         android:layout_height="3dp"
         android:layout_margin="16dp"
         android:background="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_fact" />
+        app:layout_constraintTop_toBottomOf="@+id/textFact" />
 
     <TextView
-        android:id="@+id/text_chuck_norris_name"
+        android:id="@+id/textChuckNorrisName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -75,20 +75,20 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view_separator" />
+        app:layout_constraintTop_toBottomOf="@+id/viewSeparator" />
 
     <ImageView
-        android:id="@+id/quote_right"
+        android:id="@+id/quoteRight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:contentDescription="@string/quote_description"
         android:src="@drawable/ic_quote"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_fact" />
+        app:layout_constraintTop_toBottomOf="@+id/textFact" />
 
     <ImageView
-        android:id="@+id/icon_update"
+        android:id="@+id/iconUpdate"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginBottom="8dp"
@@ -98,14 +98,14 @@
         android:contentDescription="@string/update_description"
         android:src="@drawable/ic_update"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/icon_search"
+        app:layout_constraintEnd_toEndOf="@+id/iconSearch"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_chuck_norris_name"
+        app:layout_constraintTop_toBottomOf="@+id/textChuckNorrisName"
         app:layout_constraintVertical_bias="0.385" />
 
     <ImageView
-        android:id="@+id/icon_search"
+        android:id="@+id/iconSearch"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginBottom="8dp"
@@ -115,15 +115,15 @@
         android:contentDescription="@string/search_description"
         android:src="@drawable/ic_search"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/icon_share"
+        app:layout_constraintEnd_toEndOf="@+id/iconShare"
         app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="@+id/icon_update"
-        app:layout_constraintTop_toBottomOf="@+id/text_chuck_norris_name"
+        app:layout_constraintStart_toStartOf="@+id/iconUpdate"
+        app:layout_constraintTop_toBottomOf="@+id/textChuckNorrisName"
         app:layout_constraintVertical_bias="0.385" />
 
 
     <ImageView
-        android:id="@+id/icon_share"
+        android:id="@+id/iconShare"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginBottom="8dp"
@@ -135,20 +135,20 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="@+id/icon_search"
-        app:layout_constraintTop_toBottomOf="@+id/text_chuck_norris_name"
+        app:layout_constraintStart_toStartOf="@+id/iconSearch"
+        app:layout_constraintTop_toBottomOf="@+id/textChuckNorrisName"
         app:layout_constraintVertical_bias="0.385" />
 
     <ProgressBar
-        android:id="@+id/progress_loading_fact"
+        android:id="@+id/progressLoadingFact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
         style="@android:style/Widget.Holo.ProgressBar.Large"
-        app:layout_constraintBottom_toTopOf="@+id/view_separator"
-        app:layout_constraintEnd_toEndOf="@+id/text_fact"
-        app:layout_constraintStart_toStartOf="@+id/text_fact"
-        app:layout_constraintTop_toTopOf="@+id/text_fact" />
+        app:layout_constraintBottom_toTopOf="@+id/viewSeparator"
+        app:layout_constraintEnd_toEndOf="@+id/textFact"
+        app:layout_constraintStart_toStartOf="@+id/textFact"
+        app:layout_constraintTop_toTopOf="@+id/textFact" />
 
 
 </android.support.constraint.ConstraintLayout>

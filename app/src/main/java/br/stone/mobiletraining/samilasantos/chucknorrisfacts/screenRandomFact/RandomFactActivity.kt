@@ -10,9 +10,7 @@ import br.stone.mobiletraining.samilasantos.domain.common.IntegrationExceptions
 import br.stone.mobiletraining.samilasantos.domain.common.NetworkIssues
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
-import kotlinx.android.synthetic.main.activity_random_fact.icon_update
-import kotlinx.android.synthetic.main.activity_random_fact.progress_loading_fact
-import kotlinx.android.synthetic.main.activity_random_fact.text_fact
+import kotlinx.android.synthetic.main.activity_random_fact.*
 
 class RandomFactActivity : AppCompatActivity() {
 
@@ -32,7 +30,7 @@ class RandomFactActivity : AppCompatActivity() {
     }
 
     private fun defineIntents() {
-        icon_update.setOnClickListener { viewModel.handleUpdateClick() }
+        iconUpdate.setOnClickListener { viewModel.handleUpdateClick() }
     }
 
     private fun setupView() {
@@ -71,19 +69,19 @@ class RandomFactActivity : AppCompatActivity() {
     }
 
     private fun successState(fact: String) {
-        progress_loading_fact.visibility = View.GONE
-        text_fact.visibility = View.VISIBLE
-        text_fact.text = fact
+        progressLoadingFact.visibility = View.GONE
+        textFact.visibility = View.VISIBLE
+        textFact.text = fact
     }
 
     private fun errorState() {
-        progress_loading_fact.visibility = View.GONE
-        text_fact.visibility = View.VISIBLE
+        progressLoadingFact.visibility = View.GONE
+        textFact.visibility = View.VISIBLE
     }
 
     private fun loadingState() {
-        text_fact.visibility = View.INVISIBLE
-        progress_loading_fact.visibility = View.VISIBLE
+        textFact.visibility = View.INVISIBLE
+        progressLoadingFact.visibility = View.VISIBLE
     }
 
     private fun showDialogNoNetwork() {
