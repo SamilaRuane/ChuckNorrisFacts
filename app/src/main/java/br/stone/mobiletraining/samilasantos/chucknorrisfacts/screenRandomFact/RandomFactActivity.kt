@@ -46,27 +46,15 @@ class RandomFactActivity : AppCompatActivity() {
                 when (this.error) {
                     is NetworkIssues.NoNetwork -> {
                         errorState()
-                        dialog(msg = getString(R.string.no_network_message),
-                            positiveButton = getString(R.string.retry_button),
-                            negativeButton = getString(R.string.cancel_button),
-                            listener = { dialog, _ ->
-                                dialog.dismiss()
-                                viewModel.handleUpdateClick()
-                            }).show()
+                        showDialogNoNetwork()
                     }
                     is NetworkIssues.Timeout -> {
                         errorState()
-                        dialog(msg = getString(R.string.timeout_message),
-                            positiveButton = getString(R.string.retry_button),
-                            negativeButton = getString(R.string.cancel_button),
-                            listener = { dialog, _ -> dialog.dismiss() }).show()
+                        showDialogTimeoutException()
                     }
                     is IntegrationExceptions.UnavailableProvider -> {
                         errorState()
-                        dialog(msg = getString(R.string.unavailable_provider_message),
-                            positiveButton = getString(R.string.ok_button),
-                            negativeButton = "",
-                            listener = { dialog, _ -> dialog.dismiss() }).show()
+                        showDialogUnavailableProvider()
                     }
                     else -> errorState()
                 }
@@ -90,6 +78,30 @@ class RandomFactActivity : AppCompatActivity() {
     private fun loadingState() {
         text_fact.visibility = View.INVISIBLE
         progress_loading.visibility = View.VISIBLE
+    }
+
+    private fun showDialogNoNetwork() {
+        dialog(msg = getString(R.string.no_network_message),
+            positiveButton = getString(R.string.retry_button),
+            negativeButton = getString(R.string.cancel_button),
+            listener = { dialog, _ ->
+                dialog.dismiss()
+                viewModel.handleUpdateClick()
+            }).show()
+    }
+
+    private fun showDialogTimeoutException() {
+        dialog(msg = getString(R.string.timeout_message),
+            positiveButton = getString(R.string.retry_button),
+            negativeButton = getString(R.string.cancel_button),
+            listener = { dialog, _ -> dialog.dismiss() }).show()
+    }
+
+    private fun showDialogUnavailableProvider() {
+        dialog(msg = getString(R.string.unavailable_provider_message),
+            positiveButton = getString(R.string.ok_button),
+            negativeButton = "",
+            listener = { dialog, _ -> dialog.dismiss() }).show()
     }
 
     override fun onStop() {
