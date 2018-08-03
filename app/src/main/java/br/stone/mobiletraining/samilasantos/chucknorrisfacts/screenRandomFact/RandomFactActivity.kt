@@ -30,7 +30,7 @@ class RandomFactActivity : AppCompatActivity() {
     }
 
     private fun defineIntents() {
-        icon_update.setOnClickListener { viewModel.handleUpdateClick() }
+        iconUpdate.setOnClickListener { viewModel.handleUpdateClick() }
     }
 
     private fun setupView() {
@@ -56,6 +56,10 @@ class RandomFactActivity : AppCompatActivity() {
                         errorState()
                         showDialogUnavailableProvider()
                     }
+                    is IntegrationExceptions.UnexpectedData -> {
+                        errorState()
+                        showDialogUnexpectedData()
+                    }
                     else -> errorState()
                 }
             }
@@ -65,19 +69,19 @@ class RandomFactActivity : AppCompatActivity() {
     }
 
     private fun successState(fact: String) {
-        progress_loading.visibility = View.GONE
-        text_fact.visibility = View.VISIBLE
-        text_fact.text = fact
+        progressLoadingFact.visibility = View.GONE
+        textFact.visibility = View.VISIBLE
+        textFact.text = fact
     }
 
     private fun errorState() {
-        progress_loading.visibility = View.GONE
-        text_fact.visibility = View.VISIBLE
+        progressLoadingFact.visibility = View.GONE
+        textFact.visibility = View.VISIBLE
     }
 
     private fun loadingState() {
-        text_fact.visibility = View.INVISIBLE
-        progress_loading.visibility = View.VISIBLE
+        textFact.visibility = View.INVISIBLE
+        progressLoadingFact.visibility = View.VISIBLE
     }
 
     private fun showDialogNoNetwork() {
@@ -102,6 +106,14 @@ class RandomFactActivity : AppCompatActivity() {
             positiveButton = getString(R.string.ok_button),
             negativeButton = "",
             listener = { dialog, _ -> dialog.dismiss() }).show()
+    }
+
+    private fun showDialogUnexpectedData() {
+        dialog(
+            msg = getString(R.string.unexpected_data_message),
+            positiveButton = getString(R.string.ok_button),
+            negativeButton = ""
+        ).show()
     }
 
     override fun onStop() {
