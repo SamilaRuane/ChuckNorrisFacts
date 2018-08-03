@@ -34,12 +34,12 @@
         android:layout_marginStart="16dp"
         android:contentDescription="@string/quote_description"
         android:src="@drawable/ic_quote"
-        app:layout_constraintBottom_toTopOf="@+id/textFact"
+        app:layout_constraintBottom_toTopOf="@+id/textFactDescription"
         app:layout_constraintStart_toStartOf="parent" />
 
 
     <TextView
-        android:id="@+id/textFact"
+        android:id="@+id/textFactDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -64,7 +64,7 @@
         android:background="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textFact" />
+        app:layout_constraintTop_toBottomOf="@+id/textFactDescription" />
 
     <TextView
         android:id="@+id/textChuckNorrisName"
@@ -85,7 +85,7 @@
         android:contentDescription="@string/quote_description"
         android:src="@drawable/ic_quote"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textFact" />
+        app:layout_constraintTop_toBottomOf="@+id/textFactDescription" />
 
     <ImageView
         android:id="@+id/iconUpdate"
@@ -146,9 +146,9 @@
         android:visibility="gone"
         style="@android:style/Widget.Holo.ProgressBar.Large"
         app:layout_constraintBottom_toTopOf="@+id/viewSeparator"
-        app:layout_constraintEnd_toEndOf="@+id/textFact"
-        app:layout_constraintStart_toStartOf="@+id/textFact"
-        app:layout_constraintTop_toTopOf="@+id/textFact" />
+        app:layout_constraintEnd_toEndOf="@+id/textFactDescription"
+        app:layout_constraintStart_toStartOf="@+id/textFactDescription"
+        app:layout_constraintTop_toTopOf="@+id/textFactDescription" />
 
 
 </android.support.constraint.ConstraintLayout>
