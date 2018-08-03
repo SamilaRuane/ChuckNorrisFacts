@@ -7,7 +7,6 @@ import android.view.View
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.R
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.di.diInject
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.extensions.dialog
-import br.stone.mobiletraining.samilasantos.chucknorrisfacts.screenSearchFact.SearchFactActivity
 import br.stone.mobiletraining.samilasantos.domain.common.IntegrationExceptions
 import br.stone.mobiletraining.samilasantos.domain.common.NetworkIssues
 import io.reactivex.android.schedulers.AndroidSchedulers
