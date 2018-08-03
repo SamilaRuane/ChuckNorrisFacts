@@ -14,5 +14,5 @@ fun Activity.dialog(
         .Builder(this)
         .setCancelable(false)
         .setPositiveButton(positiveButton, listener)
-        .setNegativeButton(negativeButton, listener)
-        .setMessage(msg)
+        .setNegativeButton(negativeButton) { d, _ -> d.dismiss() }
+        .setMessage(msg)!!

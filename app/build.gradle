@@ -26,6 +26,8 @@ dependencies {
     implementation Kodein.base
     implementation Kodein.conf
 
+    implementation Retrofit.base
+
     testImplementation UnitTest.jUnit
     testImplementation UnitTest.mockito
     androidTestImplementation AndroidTest.runner

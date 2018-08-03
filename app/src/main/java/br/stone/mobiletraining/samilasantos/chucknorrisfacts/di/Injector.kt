@@ -4,8 +4,7 @@ import android.app.Activity
 import android.app.Application
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.App
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.screenRandomFact.RandomFactViewModel
-import br.stone.mobiletraining.samilasantos.data.service.common.ChuckNorrisApi
-import br.stone.mobiletraining.samilasantos.data.service.common.ChuckNorrisService
+import br.stone.mobiletraining.samilasantos.data.service.common.RetrofitFactRepository
 import br.stone.mobiletraining.samilasantos.data.service.common.RetrofitManager
 import br.stone.mobiletraining.samilasantos.domain.randomFact.RandomFactRepository
 import br.stone.mobiletraining.samilasantos.domain.randomFact.uc.GetRandomFact
@@ -15,6 +14,7 @@ import com.github.salomonbrys.kodein.conf.ConfigurableKodein
 import com.github.salomonbrys.kodein.instance
 import com.github.salomonbrys.kodein.provider
 import com.github.salomonbrys.kodein.singleton
+import retrofit2.Retrofit
 
 class Injector(private val application: Application) {
 
@@ -42,15 +42,15 @@ class Injector(private val application: Application) {
             }
 
             bind<RandomFactRepository>() with singleton {
-                ChuckNorrisService(instance())
+                RetrofitFactRepository(instance())
             }
 
             bind<String>() with singleton {
                 "https://api.chucknorris.io/"
             }
 
-            bind<ChuckNorrisApi>() with singleton {
-                RetrofitManager.chuckNorrisFactsApi(instance())
+            bind<Retrofit>() with singleton {
+                RetrofitManager.buildRetrofit(instance())
             }
 
             bind<GetRandomFact>() with provider {
