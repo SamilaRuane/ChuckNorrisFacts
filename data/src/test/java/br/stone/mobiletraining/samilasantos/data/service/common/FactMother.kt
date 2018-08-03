@@ -1,5 +1,6 @@
 package br.stone.mobiletraining.samilasantos.data.service.common
 
+import br.stone.mobiletraining.samilasantos.data.service.MockWebServerUtils
 import br.stone.mobiletraining.samilasantos.domain.common.Fact
 
 object FactMother {
