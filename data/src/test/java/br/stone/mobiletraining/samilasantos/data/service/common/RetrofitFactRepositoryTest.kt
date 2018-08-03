@@ -43,7 +43,12 @@ class RetrofitFactRepositoryTest {
 
             ts.awaitTerminalEvent()
 
-            ts.assertValue { it.id == FactMother.successBodyId }
+            ts.assertValue {
+                it.id == FactMother.successBodyObject.id &&
+                    it.description == FactMother.successBodyObject.description &&
+                    it.url == FactMother.successBodyObject.url &&
+                    it.category == FactMother.successBodyObject.category
+            }
         }
     }
 

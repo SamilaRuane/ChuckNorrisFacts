@@ -1,10 +1,16 @@
 package br.stone.mobiletraining.samilasantos.data.service.common
 
 import br.stone.mobiletraining.samilasantos.data.service.MockWebServerUtils
+import br.stone.mobiletraining.samilasantos.domain.common.Fact
 
 object FactMother {
 
-    val successBodyId = "0PlGg24YSX--haND5nj4Tw"
+    val successBodyObject = Fact(
+        id = "0PlGg24YSX--haND5nj4Tw",
+        description = "Chuck Norris ride into town on Friday, stayed three Nights, the rode out again on Friday. On a horse named Steve.",
+        url = "https://api.chucknorris.io/jokes/0PlGg24YSX--haND5nj4Tw",
+        category = "Uncategorized"
+    )
     val successbody = """
         {
            "category":null,
