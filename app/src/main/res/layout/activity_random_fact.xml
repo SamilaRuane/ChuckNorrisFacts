@@ -43,13 +43,16 @@
         android:layout_margin="16dp"
         android:layout_marginBottom="8dp"
         android:gravity="center"
+        android:autoSizeTextType="uniform"
         android:text="@string/placeholder_fact"
         android:textSize="26sp"
         android:textStyle="italic"
+        android:maxLines="8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:targetApi="o" />
 
     <View
         android:id="@+id/view_separator"

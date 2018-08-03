@@ -16,7 +16,7 @@ object RandomFactMother {
             .thenReturn(
                 Single.just(Fact(id = "AFEG7878DD",
                     description = "Chuck Norris is Extreme Go Horse Father",
-                    url = "")
+                    url = "", category = "Dev")
                 ))
         func()
     }
