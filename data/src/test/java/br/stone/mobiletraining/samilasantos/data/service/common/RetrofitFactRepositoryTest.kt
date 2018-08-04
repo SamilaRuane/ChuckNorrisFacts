@@ -2,7 +2,7 @@ package br.stone.mobiletraining.samilasantos.data.service.common
 
 import br.stone.mobiletraining.samilasantos.domain.common.IntegrationExceptions
 import br.stone.mobiletraining.samilasantos.domain.common.NetworkIssues
-import br.stone.mobiletraining.samilasantos.domain.randomFact.uc.RandomFactExceptions
+import br.stone.mobiletraining.samilasantos.domain.randomFact.RandomFactExceptions
 import org.junit.Test
 
 class RetrofitFactRepositoryTest {

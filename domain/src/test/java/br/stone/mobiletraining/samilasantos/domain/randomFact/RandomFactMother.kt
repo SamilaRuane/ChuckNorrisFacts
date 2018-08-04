@@ -3,7 +3,6 @@ package br.stone.mobiletraining.samilasantos.domain.randomFact
 import br.stone.mobiletraining.samilasantos.domain.common.Fact
 import br.stone.mobiletraining.samilasantos.domain.common.IntegrationExceptions
 import br.stone.mobiletraining.samilasantos.domain.common.NetworkIssues
-import br.stone.mobiletraining.samilasantos.domain.randomFact.uc.RandomFactExceptions
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.whenever
 import io.reactivex.Single

@@ -4,7 +4,6 @@ import br.stone.mobiletraining.samilasantos.domain.common.IntegrationExceptions
 import br.stone.mobiletraining.samilasantos.domain.common.NetworkIssues
 import br.stone.mobiletraining.samilasantos.domain.randomFact.RandomFactMother.repository
 import br.stone.mobiletraining.samilasantos.domain.randomFact.uc.GetRandomFact
-import br.stone.mobiletraining.samilasantos.domain.randomFact.uc.RandomFactExceptions
 import org.junit.Test
 
 class RandomFactTest {
