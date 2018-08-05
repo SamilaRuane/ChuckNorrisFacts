@@ -2,7 +2,6 @@ package br.stone.mobiletraining.samilasantos.domain.randomFact.randomFact
 
 import br.stone.mobiletraining.samilasantos.domain.common.IntegrationExceptions
 import br.stone.mobiletraining.samilasantos.domain.common.NetworkIssues
-import br.stone.mobiletraining.samilasantos.domain.randomFact.RandomFactExceptions
 import br.stone.mobiletraining.samilasantos.domain.randomFact.RandomFactResult
 import br.stone.mobiletraining.samilasantos.domain.randomFact.randomFact.RandomFactMother.repository
 import br.stone.mobiletraining.samilasantos.domain.randomFact.uc.GetRandomFact
@@ -39,7 +38,7 @@ class GetRandomFactTest {
                 .execute().test()
             ts.awaitTerminalEvent()
             ts.assertValue { it is RandomFactResult.Error }
-            ts.assertValue { (it as RandomFactResult.Error).error == RandomFactExceptions.FactNotFound }
+            ts.assertValue { (it as RandomFactResult.Error).error == IntegrationExceptions.InfoNotFound }
         }
     }
 

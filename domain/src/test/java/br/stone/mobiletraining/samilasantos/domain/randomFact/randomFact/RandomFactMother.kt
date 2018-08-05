@@ -3,7 +3,6 @@ package br.stone.mobiletraining.samilasantos.domain.randomFact.randomFact
 import br.stone.mobiletraining.samilasantos.domain.common.Fact
 import br.stone.mobiletraining.samilasantos.domain.common.IntegrationExceptions
 import br.stone.mobiletraining.samilasantos.domain.common.NetworkIssues
-import br.stone.mobiletraining.samilasantos.domain.randomFact.RandomFactExceptions
 import br.stone.mobiletraining.samilasantos.domain.randomFact.RandomFactRepository
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.whenever
@@ -36,7 +35,7 @@ object RandomFactMother {
 
     fun withAFactNotFoundException(func: () -> Unit) {
         whenever(repository.getFact())
-            .thenReturn(Single.error(RandomFactExceptions.FactNotFound))
+            .thenReturn(Single.error(IntegrationExceptions.InfoNotFound))
         func()
     }
 

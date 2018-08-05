@@ -1,7 +1,7 @@
 package br.stone.mobiletraining.samilasantos.data.service.common
 
 import br.stone.mobiletraining.samilasantos.domain.common.IntegrationExceptions
-import br.stone.mobiletraining.samilasantos.domain.randomFact.RandomFactExceptions
+import br.stone.mobiletraining.samilasantos.domain.searchFact.SearchFactExceptions
 import io.reactivex.Single
 import io.reactivex.SingleSource
 import io.reactivex.SingleTransformer
@@ -23,9 +23,9 @@ class HandleHttpErrors<T> : SingleTransformer<T, T> {
     }
 
     private fun mapErrorWith(code: Int) = when (code) {
-        404 -> RandomFactExceptions.FactNotFound
-        in 400..499 -> RandomFactExceptions.FactNotFound
+        404 -> IntegrationExceptions.InfoNotFound
+        in 400..499 -> SearchFactExceptions.MalFormedQuery
         in 500..511 -> IntegrationExceptions.UnavailableProvider
-        else -> RandomFactExceptions.FactNotFound
+        else -> IntegrationExceptions.InfoNotFound
     }
 }
