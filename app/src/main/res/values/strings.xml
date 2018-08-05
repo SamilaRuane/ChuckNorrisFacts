@@ -12,6 +12,7 @@
     <string name="timeout_message">Tempo excedido ao tentar recuperar as informações. </string>
     <string name="unavailable_provider_message">Ocorreu um erro ao conectar com o servidor. Tente novamente mais tarde. </string>
     <string name="unexpected_data_message">Ocorreu um erro ao recuperar as informações. Tente novamente mais tarde.</string>
+    <string name="waiting_for_input_message">Digite um termo para a pesquisa.</string>
     <string name="retry_button">Retry</string>
     <string name="cancel_button">Cancel</string>
     <string name="ok_button">Ok</string>

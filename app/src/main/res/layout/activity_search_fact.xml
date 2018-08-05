@@ -61,6 +61,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardSearch" />
 
+    <TextView
+        android:id="@+id/textWaitingForInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/waiting_for_input_message"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="20sp"
+        android:visibility="gone"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardSearch"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
     <ProgressBar
         android:id="@+id/progressLoadingFacts"
         style="@android:style/Widget.Holo.ProgressBar.Large"
