@@ -6,6 +6,7 @@ apply plugin: 'kotlin-android-extensions'
 
 android.compileSdkVersion AndroidConfig.compileSdk
 android.defaultConfig.minSdkVersion AndroidConfig.minSdk
+android.defaultConfig.testInstrumentationRunner AndroidConfig.defaultTestRunner
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -22,6 +23,11 @@ dependencies {
     implementation Rx.binding
     implementation Rx.java
     implementation Rx.kotlin
+
+    implementation Kodein.base
+    implementation Kodein.conf
+
+    implementation Retrofit.base
 
     testImplementation UnitTest.jUnit
     testImplementation UnitTest.mockito

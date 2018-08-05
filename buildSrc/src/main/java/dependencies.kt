@@ -6,7 +6,6 @@
  *
  * */
 
-
 const val KOTLIN_VERSION = "1.2.51"
 const val SUPPORT_LIBRARY_VERSION = "27.1.1"
 const val CONSTRAINT_LAYOUT_VERSION = "1.1.2"
@@ -17,10 +16,11 @@ const val RX_BINDING_VERSION = "2.1.1"
 const val JUNIT_VERSION = "4.12"
 const val TEST_RUNNER_VERSION = "1.0.2"
 const val ESPRESSO_VERSION = "3.0.2"
-const val MOCKITO_VERSION = "1.9.5"
+const val MOCKITO_VERSION = "0.9.0"
 const val TEST_RULES_VERSION = "1.0.2"
 const val RETROFIT_VERSION = "2.4.0"
-const val LOGGING_VERSION = "3.10.0"
+const val OKHTTP_VERSION = "3.10.0"
+const val KODEIN_VERSION = "4.1.0"
 
 object Kotlin {
     val standardLibrary = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$KOTLIN_VERSION"
@@ -30,7 +30,8 @@ object Android {
     val appCompat = "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
     val cardView = "com.android.support:cardview-v7:$SUPPORT_LIBRARY_VERSION"
     val recyclerView = "com.android.support:recyclerview-v7:$SUPPORT_LIBRARY_VERSION"
-    val constraintLayout = "com.android.support.constraint:constraint-layout:$CONSTRAINT_LAYOUT_VERSION"
+    val constraintLayout =
+        "com.android.support.constraint:constraint-layout:$CONSTRAINT_LAYOUT_VERSION"
 }
 
 object Rx {
@@ -44,7 +45,8 @@ object Retrofit {
     val base = "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
     val gsonConverter = "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
     val callAdapter = "com.squareup.retrofit2:adapter-rxjava2:$RETROFIT_VERSION"
-    val logging = "com.squareup.okhttp3:logging-interceptor:$LOGGING_VERSION"
+    val logging = "com.squareup.okhttp3:logging-interceptor:$OKHTTP_VERSION"
+    val mockWebServer = "com.squareup.okhttp3:mockwebserver:$OKHTTP_VERSION"
 }
 
 object AndroidTest {
@@ -57,5 +59,10 @@ object AndroidTest {
 
 object UnitTest {
     val jUnit = "junit:junit:$JUNIT_VERSION"
-    val mockito = "org.mockito:mockito-all:$MOCKITO_VERSION"
+    val mockito = "com.nhaarman:mockito-kotlin:$MOCKITO_VERSION"
+}
+
+object Kodein {
+    val base = "com.github.salomonbrys.kodein:kodein:$KODEIN_VERSION"
+    val conf = "com.github.salomonbrys.kodein:kodein-conf:$KODEIN_VERSION"
 }

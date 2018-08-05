@@ -1,4 +1,4 @@
-package br.stone.mobiletraining.samilasantos.data
+package br.stone.mobiletraining.samilasantos.data.service.common
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -7,7 +7,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitManager {
-    fun chuckNorrisFactsService(): ChuckNorrisApi {
+    fun buildRetrofit(baseUrl: String): Retrofit {
         val logging = HttpLoggingInterceptor()
         logging.level = HttpLoggingInterceptor.Level.BODY
         val httpClient =
@@ -15,14 +15,12 @@ object RetrofitManager {
                 .addInterceptor(logging)
                 .build()
 
-        val service = Retrofit
+        return Retrofit
             .Builder()
-            .baseUrl("https://api.chucknorris.io/")
+            .baseUrl(baseUrl)
             .client(httpClient)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-
-        return service.create(ChuckNorrisApi::class.java)
     }
 }
