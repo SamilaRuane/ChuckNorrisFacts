@@ -1,16 +1,18 @@
-package br.stone.mobiletraining.samilasantos.domain.randomFact
+package br.stone.mobiletraining.samilasantos.domain.randomFact.randomFact
 
 import br.stone.mobiletraining.samilasantos.domain.common.IntegrationExceptions
 import br.stone.mobiletraining.samilasantos.domain.common.NetworkIssues
-import br.stone.mobiletraining.samilasantos.domain.randomFact.RandomFactMother.repository
+import br.stone.mobiletraining.samilasantos.domain.randomFact.RandomFactExceptions
+import br.stone.mobiletraining.samilasantos.domain.randomFact.RandomFactResult
+import br.stone.mobiletraining.samilasantos.domain.randomFact.randomFact.RandomFactMother.repository
 import br.stone.mobiletraining.samilasantos.domain.randomFact.uc.GetRandomFact
 import org.junit.Test
 
-class RandomFactTest {
+class GetRandomFactTest {
 
     @Test
     fun `given a no network error, GetRandomFact should return an error`() {
-        RandomFactMother.withANoNetworkError {
+        RandomFactMother.withANoNetworkException {
             val ts = GetRandomFact(repository)
                 .execute().test()
             ts.awaitTerminalEvent()
@@ -21,7 +23,7 @@ class RandomFactTest {
 
     @Test
     fun `given a timeout error, GetRandomFact should return an error`() {
-        RandomFactMother.withATimeoutError {
+        RandomFactMother.withATimeoutException {
             val ts = GetRandomFact(repository)
                 .execute().test()
             ts.awaitTerminalEvent()
@@ -32,7 +34,7 @@ class RandomFactTest {
 
     @Test
     fun `given a fact not found error, GetRandomFact should return an error`() {
-        RandomFactMother.withAFactNotFoundError {
+        RandomFactMother.withAFactNotFoundException {
             val ts = GetRandomFact(repository)
                 .execute().test()
             ts.awaitTerminalEvent()
@@ -43,7 +45,7 @@ class RandomFactTest {
 
     @Test
     fun `given an unexpected data error, GetRandomFact should return an error`() {
-        RandomFactMother.withAUnexpectedDataError {
+        RandomFactMother.withAUnexpectedDataException {
             val ts = GetRandomFact(repository)
                 .execute().test()
             ts.awaitTerminalEvent()
@@ -54,7 +56,7 @@ class RandomFactTest {
 
     @Test
     fun `given a unavailable provider error, GetRandomFact should return an error`() {
-        RandomFactMother.withAUnavailableProviderError {
+        RandomFactMother.withAUnavailableProviderException {
             val ts = GetRandomFact(repository)
                 .execute().test()
             ts.awaitTerminalEvent()

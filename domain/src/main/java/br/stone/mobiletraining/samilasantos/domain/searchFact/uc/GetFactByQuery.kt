@@ -5,8 +5,8 @@ import br.stone.mobiletraining.samilasantos.domain.searchFact.SearchFactReposito
 import io.reactivex.Single
 
 class GetFactByQuery(private val repository: SearchFactRepository) {
-    fun execute(query: String): Single<GetFactByQueryResult> =
+    fun using(query: String): Single<GetFactByQueryResult> =
         repository.getFactsThatContains(query)
             .map { GetFactByQueryResult.Success(it) as GetFactByQueryResult }
-            .onErrorReturn { GetFactByQueryResult.Error(it) as GetFactByQueryResult }
+            .onErrorReturn { GetFactByQueryResult.Error(it) }
 }

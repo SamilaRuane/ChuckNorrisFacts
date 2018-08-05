@@ -1,8 +1,10 @@
-package br.stone.mobiletraining.samilasantos.domain.randomFact
+package br.stone.mobiletraining.samilasantos.domain.randomFact.randomFact
 
 import br.stone.mobiletraining.samilasantos.domain.common.Fact
 import br.stone.mobiletraining.samilasantos.domain.common.IntegrationExceptions
 import br.stone.mobiletraining.samilasantos.domain.common.NetworkIssues
+import br.stone.mobiletraining.samilasantos.domain.randomFact.RandomFactExceptions
+import br.stone.mobiletraining.samilasantos.domain.randomFact.RandomFactRepository
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.whenever
 import io.reactivex.Single
@@ -20,31 +22,31 @@ object RandomFactMother {
         func()
     }
 
-    fun withANoNetworkError(func: () -> Unit) {
+    fun withANoNetworkException(func: () -> Unit) {
         whenever(repository.getFact())
             .thenReturn(Single.error(NetworkIssues.NoNetwork))
         func()
     }
 
-    fun withATimeoutError(func: () -> Unit) {
+    fun withATimeoutException(func: () -> Unit) {
         whenever(repository.getFact())
             .thenReturn(Single.error(NetworkIssues.Timeout))
         func()
     }
 
-    fun withAFactNotFoundError(func: () -> Unit) {
+    fun withAFactNotFoundException(func: () -> Unit) {
         whenever(repository.getFact())
             .thenReturn(Single.error(RandomFactExceptions.FactNotFound))
         func()
     }
 
-    fun withAUnavailableProviderError(func: () -> Unit) {
+    fun withAUnavailableProviderException(func: () -> Unit) {
         whenever(repository.getFact())
             .thenReturn(Single.error(IntegrationExceptions.UnavailableProvider))
         func()
     }
 
-    fun withAUnexpectedDataError(func: () -> Unit) {
+    fun withAUnexpectedDataException(func: () -> Unit) {
         whenever(repository.getFact())
             .thenReturn(Single.error(IntegrationExceptions.UnexpectedData))
         func()

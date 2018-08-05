@@ -1,5 +1,5 @@
 package br.stone.mobiletraining.samilasantos.domain.searchFact
 
-sealed class SearchFactExceptions {
+sealed class SearchFactExceptions : Throwable() {
     object QueryNotMatchException : SearchFactExceptions()
 }
