@@ -11,9 +11,12 @@ import kotlinx.android.synthetic.main.activity_search_fact.*
 
 class SearchFactActivity : AppCompatActivity() {
 
+    lateinit var groupAdapter: GroupAdapter<ViewHolder>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_fact)
+        groupAdapter = GroupAdapter()
     }
 
     override fun onStart() {
@@ -27,7 +30,6 @@ class SearchFactActivity : AppCompatActivity() {
     }
 
     private fun setupView() {
-        val groupAdapter = GroupAdapter<ViewHolder>()
         recyclerFactsList.apply {
             layoutManager =
                 LinearLayoutManager(

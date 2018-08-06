@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.item_button.*
 import kotlinx.android.synthetic.main.item_fact.*
 import kotlinx.android.synthetic.main.view_error.*
 
-class FactsGroup(private val fact: Fact) : Item(0) {
+class FactsGroup(private val fact: Fact) : Item() {
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.apply {
             textFactDescription.text = fact.description
@@ -17,16 +17,19 @@ class FactsGroup(private val fact: Fact) : Item(0) {
     }
 
     override fun getLayout(): Int = R.layout.item_fact
+
+    override fun isSameAs(other: com.xwray.groupie.Item<*>?): Boolean =
+        (other as? FactsGroup)?.fact == fact
 }
 
-class LoadingGroup : Item(1) {
+class LoadingGroup : Item(0) {
     override fun bind(viewHolder: ViewHolder, position: Int) = Unit
 
     override fun getLayout(): Int = R.layout.item_loading
 }
 
 class ErrorGroup(private val errorMessage: String) :
-    Item(2) {
+    Item() {
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.apply {
             textErrorInfo.text = errorMessage
@@ -34,9 +37,12 @@ class ErrorGroup(private val errorMessage: String) :
     }
 
     override fun getLayout(): Int = R.layout.view_error
+
+    override fun isSameAs(other: com.xwray.groupie.Item<*>?): Boolean =
+        (other as? ErrorGroup)?.errorMessage == errorMessage
 }
 
-class ButtonGroup(private val name: String, private val onClick: () -> Unit) : Item(3) {
+class ButtonGroup(private val name: String, private val onClick: () -> Unit) : Item() {
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.apply {
             buttonError.text = name
@@ -47,9 +53,12 @@ class ButtonGroup(private val name: String, private val onClick: () -> Unit) : I
     }
 
     override fun getLayout(): Int = R.layout.item_button
+
+    override fun isSameAs(other: com.xwray.groupie.Item<*>?): Boolean =
+        (other as? ButtonGroup)?.name == name
 }
 
-class InitialGroup : Item(4) {
+class InitialGroup : Item(1) {
     override fun bind(viewHolder: ViewHolder, position: Int) = Unit
 
     override fun getLayout(): Int = R.layout.item_initial_message

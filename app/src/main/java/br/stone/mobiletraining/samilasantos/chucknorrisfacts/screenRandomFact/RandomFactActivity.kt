@@ -33,11 +33,10 @@ class RandomFactActivity : AppCompatActivity() {
 
     private fun defineIntents() {
         iconUpdate.setOnClickListener { viewModel.handleUpdateClick() }
-        iconSearch.setOnClickListener { navigateTo(SearchFactActivity::class.java) }
+        iconSearch.setOnClickListener { navigateToSearchFactScreen() }
     }
 
     private fun setupView() {
-        Intent()
         disposable = viewModel.observeState()
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { it.updateFact() }
@@ -119,8 +118,8 @@ class RandomFactActivity : AppCompatActivity() {
         ).show()
     }
 
-    private fun navigateTo(target: Class<*>) {
-        startActivity(Intent(RandomFactActivity@ this, target))
+    private fun navigateToSearchFactScreen() {
+        startActivity(Intent(RandomFactActivity@ this, SearchFactActivity::class.java))
     }
 
     override fun onStop() {
