@@ -4,6 +4,9 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.R
+import br.stone.mobiletraining.samilasantos.chucknorrisfacts.common.FactsGroup
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_search_fact.*
 
 class SearchFactActivity : AppCompatActivity() {
@@ -20,13 +23,25 @@ class SearchFactActivity : AppCompatActivity() {
     }
 
     private fun defineIntents() {
-        imageIconSearch.setOnClickListener {}
+        imageIconSearch.setOnClickListener { }
     }
 
     private fun setupView() {
-        recyclerFactsList.layoutManager =
-            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        recyclerFactsList.adapter = FactAdapter(getMockedFacts())
+        val groupAdapter = GroupAdapter<ViewHolder>()
+        recyclerFactsList.apply {
+            layoutManager =
+                LinearLayoutManager(
+                    SearchFactActivity@ this.context,
+                    LinearLayoutManager.VERTICAL,
+                    false
+                )
+            adapter = groupAdapter
+            addItemsToAdapter(adapter = groupAdapter)
+        }
+    }
+
+    private fun addItemsToAdapter(adapter: GroupAdapter<ViewHolder>) {
+        adapter.addAll(getMockedFacts().map { FactsGroup(it) })
     }
 
     override fun onStop() {

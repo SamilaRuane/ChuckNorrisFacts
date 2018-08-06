@@ -8,6 +8,10 @@ android.compileSdkVersion AndroidConfig.compileSdk
 android.defaultConfig.minSdkVersion AndroidConfig.minSdk
 android.defaultConfig.testInstrumentationRunner AndroidConfig.defaultTestRunner
 
+androidExtensions {
+    experimental = true
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':domain')
@@ -29,7 +33,9 @@ dependencies {
 
     implementation Retrofit.base
 
-    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    implementation Groupie.base
+    implementation Groupie.kotlinExtensions
+
     testImplementation UnitTest.jUnit
     testImplementation UnitTest.mockito
     androidTestImplementation AndroidTest.runner

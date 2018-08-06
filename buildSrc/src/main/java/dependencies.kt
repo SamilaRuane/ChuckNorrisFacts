@@ -21,6 +21,9 @@ const val TEST_RULES_VERSION = "1.0.2"
 const val RETROFIT_VERSION = "2.4.0"
 const val OKHTTP_VERSION = "3.10.0"
 const val KODEIN_VERSION = "4.1.0"
+const val GROUPIE_VERSION = "2.1.0"
+const val GRADLE_VERSION = "3.1.3"
+const val KOTLIN_LINT_VERSION = "1.15.1"
 
 object Kotlin {
     val standardLibrary = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$KOTLIN_VERSION"
@@ -65,4 +68,15 @@ object UnitTest {
 object Kodein {
     val base = "com.github.salomonbrys.kodein:kodein:$KODEIN_VERSION"
     val conf = "com.github.salomonbrys.kodein:kodein-conf:$KODEIN_VERSION"
+}
+
+object Groupie {
+    val base = "com.xwray:groupie:$GROUPIE_VERSION"
+    val kotlinExtensions = "com.xwray:groupie-kotlin-android-extensions:$GROUPIE_VERSION"
+}
+
+object ClasspathDependencies {
+    val gradle = "com.android.tools.build:gradle:$GRADLE_VERSION"
+    val kotlinPlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$KOTLIN_VERSION"
+    val kotlinLintPlugin = "gradle.plugin.org.jmailen.gradle:kotlinter-gradle:$KOTLIN_LINT_VERSION"
 }
