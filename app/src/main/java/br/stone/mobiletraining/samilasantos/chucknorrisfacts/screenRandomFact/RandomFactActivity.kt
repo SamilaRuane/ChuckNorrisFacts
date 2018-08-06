@@ -1,11 +1,13 @@
 package br.stone.mobiletraining.samilasantos.chucknorrisfacts.screenRandomFact
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.R
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.di.diInject
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.extensions.dialog
+import br.stone.mobiletraining.samilasantos.chucknorrisfacts.screenSearchFact.SearchFactActivity
 import br.stone.mobiletraining.samilasantos.domain.common.IntegrationExceptions
 import br.stone.mobiletraining.samilasantos.domain.common.NetworkIssues
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -31,10 +33,10 @@ class RandomFactActivity : AppCompatActivity() {
 
     private fun defineIntents() {
         iconUpdate.setOnClickListener { viewModel.handleUpdateClick() }
+        iconSearch.setOnClickListener { navigateToSearchFactScreen() }
     }
 
     private fun setupView() {
-
         disposable = viewModel.observeState()
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { it.updateFact() }
@@ -70,17 +72,17 @@ class RandomFactActivity : AppCompatActivity() {
 
     private fun successState(fact: String) {
         progressLoadingFact.visibility = View.GONE
-        textFact.visibility = View.VISIBLE
-        textFact.text = fact
+        textFactDescription.visibility = View.VISIBLE
+        textFactDescription.text = fact
     }
 
     private fun errorState() {
         progressLoadingFact.visibility = View.GONE
-        textFact.visibility = View.VISIBLE
+        textFactDescription.visibility = View.VISIBLE
     }
 
     private fun loadingState() {
-        textFact.visibility = View.INVISIBLE
+        textFactDescription.visibility = View.INVISIBLE
         progressLoadingFact.visibility = View.VISIBLE
     }
 
@@ -114,6 +116,10 @@ class RandomFactActivity : AppCompatActivity() {
             positiveButton = getString(R.string.ok_button),
             negativeButton = ""
         ).show()
+    }
+
+    private fun navigateToSearchFactScreen() {
+        startActivity(Intent(RandomFactActivity@ this, SearchFactActivity::class.java))
     }
 
     override fun onStop() {

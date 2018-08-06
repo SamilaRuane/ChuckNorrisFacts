@@ -13,7 +13,7 @@ object RandomFactActivityRobot {
 
     fun isFactVisible() {
         onView(withId(R.id.viewSeparator)).check(matches(isDisplayed()))
-        onView(withId(R.id.textFact)).check(matches(isDisplayed()))
+        onView(withId(R.id.textFactDescription)).check(matches(isDisplayed()))
     }
 
     fun isHeaderVisible() {

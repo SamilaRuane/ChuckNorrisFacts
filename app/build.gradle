@@ -8,6 +8,10 @@ android.compileSdkVersion AndroidConfig.compileSdk
 android.defaultConfig.minSdkVersion AndroidConfig.minSdk
 android.defaultConfig.testInstrumentationRunner AndroidConfig.defaultTestRunner
 
+androidExtensions {
+    experimental = true
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':domain')
@@ -28,6 +32,9 @@ dependencies {
     implementation Kodein.conf
 
     implementation Retrofit.base
+
+    implementation Groupie.base
+    implementation Groupie.kotlinExtensions
 
     testImplementation UnitTest.jUnit
     testImplementation UnitTest.mockito
