@@ -1,11 +1,12 @@
 package br.stone.mobiletraining.samilasantos.domain.searchFact.uc
 
 class ProcessCategoryBgColor {
-    fun using(category: String): Color =
-        if (category == "Uncategorized") Color.GRAY else Color.BLUE
+    private val defaultCategory = "Uncategorized"
+    fun using(category: String): CategoryBackgroundColor =
+        if (category == defaultCategory) CategoryBackgroundColor.GRAY else CategoryBackgroundColor.BLUE
 }
 
-enum class Color {
+enum class CategoryBackgroundColor {
     BLUE,
     GRAY
 }
