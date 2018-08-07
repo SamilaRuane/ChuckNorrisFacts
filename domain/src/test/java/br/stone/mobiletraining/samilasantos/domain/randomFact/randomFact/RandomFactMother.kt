@@ -9,45 +9,54 @@ import com.nhaarman.mockito_kotlin.whenever
 import io.reactivex.Single
 
 object RandomFactMother {
-    val repository: RandomFactRepository = mock()
 
-    fun withASuccessScenario(func: () -> Unit) {
+    fun withASuccessScenario(func: (RandomFactRepository) -> Unit) {
+        val repository: RandomFactRepository = mock()
         whenever(repository.getFact())
             .thenReturn(
-                Single.just(Fact(id = "AFEG7878DD",
-                    description = "Chuck Norris is Extreme Go Horse Father",
-                    url = "", category = "Dev")
-                ))
-        func()
+                Single.just(
+                    Fact(
+                        id = "AFEG7878DD",
+                        description = "Chuck Norris is Extreme Go Horse Father",
+                        url = "", category = "Dev"
+                    )
+                )
+            )
+        func(repository)
     }
 
-    fun withANoNetworkException(func: () -> Unit) {
+    fun withANoNetworkException(func: (RandomFactRepository) -> Unit) {
+        val repository: RandomFactRepository = mock()
         whenever(repository.getFact())
             .thenReturn(Single.error(NetworkIssues.NoNetwork))
-        func()
+        func(repository)
     }
 
-    fun withATimeoutException(func: () -> Unit) {
+    fun withATimeoutException(func: (RandomFactRepository) -> Unit) {
+        val repository: RandomFactRepository = mock()
         whenever(repository.getFact())
             .thenReturn(Single.error(NetworkIssues.Timeout))
-        func()
+        func(repository)
     }
 
-    fun withAFactNotFoundException(func: () -> Unit) {
+    fun withAFactNotFoundException(func: (RandomFactRepository) -> Unit) {
+        val repository: RandomFactRepository = mock()
         whenever(repository.getFact())
             .thenReturn(Single.error(IntegrationExceptions.InfoNotFound))
-        func()
+        func(repository)
     }
 
-    fun withAUnavailableProviderException(func: () -> Unit) {
+    fun withAUnavailableProviderException(func: (RandomFactRepository) -> Unit) {
+        val repository: RandomFactRepository = mock()
         whenever(repository.getFact())
             .thenReturn(Single.error(IntegrationExceptions.UnavailableProvider))
-        func()
+        func(repository)
     }
 
-    fun withAUnexpectedDataException(func: () -> Unit) {
+    fun withAUnexpectedDataException(func: (RandomFactRepository) -> Unit) {
+        val repository: RandomFactRepository = mock()
         whenever(repository.getFact())
             .thenReturn(Single.error(IntegrationExceptions.UnexpectedData))
-        func()
+        func(repository)
     }
 }

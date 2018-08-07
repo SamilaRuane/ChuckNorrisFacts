@@ -10,7 +10,7 @@ import com.nhaarman.mockito_kotlin.whenever
 import io.reactivex.Single
 
 object SearchFactMother {
-    val repository: SearchFactRepository = mock()
+
     private val list = arrayListOf(
         Fact(
             id = "AFEG7878DD",
@@ -24,41 +24,47 @@ object SearchFactMother {
         )
     )
 
-    fun withASuccessScenario(func: SearchFactMother.() -> Unit) {
+    fun withASuccessScenario(func: (SearchFactRepository) -> Unit) {
+        val repository: SearchFactRepository = mock()
         whenever(repository.getFactsThatContains("dev"))
             .thenReturn(
                 Single.just(list)
             )
-        func()
+        func(repository)
     }
 
-    fun withANoNetworkException(func: SearchFactMother.() -> Unit) {
+    fun withANoNetworkException(func: (SearchFactRepository) -> Unit) {
+        val repository: SearchFactRepository = mock()
         whenever(repository.getFactsThatContains("dev"))
             .thenReturn(Single.error(NetworkIssues.NoNetwork))
-        func()
+        func(repository)
     }
 
-    fun withATimeoutException(func: SearchFactMother.() -> Unit) {
+    fun withATimeoutException(func: (SearchFactRepository) -> Unit) {
+        val repository: SearchFactRepository = mock()
         whenever(repository.getFactsThatContains("dev"))
             .thenReturn(Single.error(NetworkIssues.Timeout))
-        func()
+        func(repository)
     }
 
-    fun withAQueryNotMatchException(func: SearchFactMother.() -> Unit) {
+    fun withAQueryNotMatchException(func: (SearchFactRepository) -> Unit) {
+        val repository: SearchFactRepository = mock()
         whenever(repository.getFactsThatContains("dev"))
             .thenReturn(Single.error(SearchFactExceptions.QueryNotMatchException))
-        func()
+        func(repository)
     }
 
-    fun withAUnavailableProviderException(func: SearchFactMother.() -> Unit) {
+    fun withAUnavailableProviderException(func: (SearchFactRepository) -> Unit) {
+        val repository: SearchFactRepository = mock()
         whenever(repository.getFactsThatContains("dev"))
             .thenReturn(Single.error(IntegrationExceptions.UnavailableProvider))
-        func()
+        func(repository)
     }
 
-    fun withAUnexpectedDataException(func: SearchFactMother.() -> Unit) {
+    fun withAUnexpectedDataException(func: (SearchFactRepository) -> Unit) {
+        val repository: SearchFactRepository = mock()
         whenever(repository.getFactsThatContains("dev"))
             .thenReturn(Single.error(IntegrationExceptions.UnexpectedData))
-        func()
+        func(repository)
     }
 }
