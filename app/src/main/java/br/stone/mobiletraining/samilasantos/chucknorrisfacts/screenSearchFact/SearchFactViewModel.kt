@@ -54,5 +54,5 @@ class SearchFactViewModel(
                 }
                 .toObservable()
                 .startWith(SearchFactContract.ViewState.Loading)
-        }
+        }.startWith(SearchFactContract.ViewState.WaitingForInput)
 }

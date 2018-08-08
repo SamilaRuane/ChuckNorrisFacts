@@ -56,7 +56,6 @@ class SearchFactActivity : AppCompatActivity() {
                     false
                 )
             adapter = groupAdapter
-            groupAdapter.add(InitialGroup())
 
             disposable = viewModel.observeState()
                 .observeOn(AndroidSchedulers.mainThread())
@@ -66,6 +65,7 @@ class SearchFactActivity : AppCompatActivity() {
 
     private fun SearchFactContract.ViewState.render(adapter: GroupAdapter<ViewHolder>) {
         when (this) {
+            is SearchFactContract.ViewState.WaitingForInput -> adapter.add(InitialGroup())
             is SearchFactContract.ViewState.Success -> adapter.renderSuccessState(this.facts)
             is SearchFactContract.ViewState.Loading -> adapter.renderLoadingState()
             is SearchFactContract.ViewState.NoNetworkIssue -> adapter.renderStateWithRetryAndSettingsButton()

@@ -14,6 +14,7 @@ class SearchFactContract {
     )
 
     sealed class ViewState {
+        object WaitingForInput : ViewState()
         data class Success(val facts: List<Item>) : ViewState()
         object Loading : ViewState()
         object NoMatchQuery : ViewState()
