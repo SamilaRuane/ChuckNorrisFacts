@@ -28,12 +28,13 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="5" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/imageIconSearch"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_search" />
         </LinearLayout>
     </android.support.v7.widget.CardView>

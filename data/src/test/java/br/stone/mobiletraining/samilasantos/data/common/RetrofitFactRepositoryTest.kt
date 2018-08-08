@@ -2,17 +2,16 @@ package br.stone.mobiletraining.samilasantos.data.service.common
 
 import br.stone.mobiletraining.samilasantos.domain.common.IntegrationExceptions
 import br.stone.mobiletraining.samilasantos.domain.common.NetworkIssues
-import br.stone.mobiletraining.samilasantos.domain.randomFact.uc.RandomFactExceptions
 import org.junit.Test
 
 class RetrofitFactRepositoryTest {
 
     @Test
-    fun `given a fact not found error, RetrofitFactRepository should return a FactNotFound object `() {
+    fun `given a fact not found error, RetrofitFactRepository should return a InfoNotFound object `() {
         FactMother.runWithError(404) {
             val ts = getFact().test()
             ts.awaitTerminalEvent()
-            ts.assertError(RandomFactExceptions.FactNotFound)
+            ts.assertError(IntegrationExceptions.InfoNotFound)
         }
     }
 

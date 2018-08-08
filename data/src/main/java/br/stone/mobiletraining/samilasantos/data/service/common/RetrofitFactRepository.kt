@@ -1,5 +1,6 @@
 package br.stone.mobiletraining.samilasantos.data.service.common
 
+import br.stone.mobiletraining.samilasantos.data.service.randomFact.HandleRandomFactHttpExceptions
 import br.stone.mobiletraining.samilasantos.domain.common.Fact
 import br.stone.mobiletraining.samilasantos.domain.randomFact.RandomFactRepository
 import com.google.gson.annotations.SerializedName
@@ -13,9 +14,8 @@ class RetrofitFactRepository(retrofit: Retrofit) : RandomFactRepository {
 
     override fun getFact(): Single<Fact> = api.getRandomFact()
         .subscribeOn(Schedulers.io())
-        .compose(HandleConnectionErrors())
-        .compose(HandleParsingErrors())
-        .compose(HandleHttpErrors())
+        .compose(HandleConnectionExceptions())
+        .compose(HandleParsingExceptions())
         .map { fact ->
             Fact(
                 fact.id,
@@ -24,6 +24,7 @@ class RetrofitFactRepository(retrofit: Retrofit) : RandomFactRepository {
                 fact.category?.first() ?: "Uncategorized"
             )
         }
+        .compose(HandleRandomFactHttpExceptions())
 }
 
 private interface ChuckNorrisApi {

@@ -7,7 +7,7 @@ import io.reactivex.SingleTransformer
 import java.net.ConnectException
 import java.net.UnknownHostException
 
-class HandleConnectionErrors<T> : SingleTransformer<T, T> {
+class HandleConnectionExceptions<T> : SingleTransformer<T, T> {
     override fun apply(upstream: Single<T>): SingleSource<T> {
         return upstream.onErrorResumeNext(this::handleIfNetworkError)
     }
