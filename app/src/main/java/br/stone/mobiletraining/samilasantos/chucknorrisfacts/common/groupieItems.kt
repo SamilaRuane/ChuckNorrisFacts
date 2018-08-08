@@ -1,18 +1,34 @@
 package br.stone.mobiletraining.samilasantos.chucknorrisfacts.common
 
+import android.support.v4.content.ContextCompat
+import android.util.TypedValue
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.R
-import br.stone.mobiletraining.samilasantos.domain.common.Fact
+import br.stone.mobiletraining.samilasantos.chucknorrisfacts.screenSearchFact.SearchFactContract
+import br.stone.mobiletraining.samilasantos.domain.searchFact.uc.CategoryBackgroundColor
+import br.stone.mobiletraining.samilasantos.domain.searchFact.uc.FactDescriptionFontSize
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.item_button.*
 import kotlinx.android.synthetic.main.item_fact.*
 import kotlinx.android.synthetic.main.view_error.*
 
-class FactsGroup(private val fact: Fact) : Item() {
+class FactsGroup(private val fact: SearchFactContract.Item) : Item() {
+    private val regularSize = 14
+    private val largerSize = 16
+
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.apply {
             textFactDescription.text = fact.description
             textCategory.text = fact.category
+            textCategory.setBackgroundColor(
+                if (fact.categoryBgColor == CategoryBackgroundColor.GRAY)
+                    ContextCompat.getColor(itemView.context, R.color.category_gray_background)
+                else ContextCompat.getColor(itemView.context, R.color.category_blue_background)
+            )
+            textFactDescription.setTextSize(
+                TypedValue.COMPLEX_UNIT_SP,
+                if (fact.fontSize == FactDescriptionFontSize.REGULAR) regularSize.toFloat() else largerSize.toFloat()
+            )
         }
     }
 

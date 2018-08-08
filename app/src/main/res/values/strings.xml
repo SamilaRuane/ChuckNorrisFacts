@@ -13,6 +13,8 @@
     <string name="unavailable_provider_message">Ocorreu um erro ao conectar com o servidor. Tente novamente mais tarde. </string>
     <string name="unexpected_data_message">Ocorreu um erro ao recuperar as informações. Tente novamente mais tarde.</string>
     <string name="waiting_for_input_message">Digite um termo para a pesquisa.</string>
+    <string name="malformed_query_message">Não é possível fazer a pesquisa com este termo de busca. Insira um novo termo e tente novamente</string>
+    <string name="query_not_match_message">Nenhum resultado foi encontrado com este termo. Insira um novo termo e tente novamente. </string>
     <string name="retry_button">Retry</string>
     <string name="cancel_button">Cancel</string>
     <string name="ok_button">Ok</string>
