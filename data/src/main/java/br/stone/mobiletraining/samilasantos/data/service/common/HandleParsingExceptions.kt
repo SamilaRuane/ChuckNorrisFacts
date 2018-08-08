@@ -9,7 +9,7 @@ import io.reactivex.Single
 import io.reactivex.SingleSource
 import io.reactivex.SingleTransformer
 
-class HandleParsingErrors<T> : SingleTransformer<T, T> {
+class HandleParsingExceptions<T> : SingleTransformer<T, T> {
 
     override fun apply(upstream: Single<T>): SingleSource<T> {
         return upstream.onErrorResumeNext(this::handleIfParsingError)

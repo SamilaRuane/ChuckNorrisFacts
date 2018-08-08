@@ -10,7 +10,7 @@ import org.junit.Test
 class RetrofitRandomFactRepositoryTest {
 
     @Test
-    fun `given a fact not found error, RetrofitFactRepository should return a FactNotFound object `() {
+    fun `given a fact not found error, RetrofitFactRepository should return a InfoNotFound object `() {
         FactScenarios.runWithError(404) {
             val ts = getFact().test()
             ts.awaitTerminalEvent()
