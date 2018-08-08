@@ -1,5 +1,6 @@
 package br.stone.mobiletraining.samilasantos.chucknorrisfacts.screenSearchFact
 
+import android.arch.lifecycle.ViewModel
 import br.stone.mobiletraining.samilasantos.domain.common.IntegrationExceptions
 import br.stone.mobiletraining.samilasantos.domain.common.NetworkIssues
 import br.stone.mobiletraining.samilasantos.domain.searchFact.GetFactByQueryResult
@@ -15,11 +16,18 @@ class SearchFactViewModel(
     private val getFactByQuery: GetFactByQuery,
     private val calculateFontSize: CalculateFactDescriptionFontSize,
     private val processCategoryBgColor: ProcessCategoryBgColor
-) {
+) : ViewModel() {
+
     private val searchIntentObservable = PublishSubject.create<String>()
+    private var actualState: SearchFactContract.ViewState =
+        SearchFactContract.ViewState.WaitingForInput
 
     fun handleWithSearchClick(query: String) {
         searchIntentObservable.onNext(query)
+    }
+
+    fun stateWasChanged(viewState: SearchFactContract.ViewState) {
+        actualState = viewState
     }
 
     fun observeState(): Observable<SearchFactContract.ViewState> = searchIntentObservable
@@ -54,5 +62,5 @@ class SearchFactViewModel(
                 }
                 .toObservable()
                 .startWith(SearchFactContract.ViewState.Loading)
-        }.startWith(SearchFactContract.ViewState.WaitingForInput)
+        }.startWith(actualState)
 }

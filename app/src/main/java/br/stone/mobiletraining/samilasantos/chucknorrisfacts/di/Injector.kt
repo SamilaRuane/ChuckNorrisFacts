@@ -4,7 +4,6 @@ import android.app.Activity
 import android.app.Application
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.App
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.screenRandomFact.RandomFactViewModel
-import br.stone.mobiletraining.samilasantos.chucknorrisfacts.screenSearchFact.SearchFactViewModel
 import br.stone.mobiletraining.samilasantos.data.service.common.RetrofitFactRepository
 import br.stone.mobiletraining.samilasantos.data.service.common.RetrofitManager
 import br.stone.mobiletraining.samilasantos.data.service.searchFact.MockSearchFactRepository
@@ -20,9 +19,14 @@ import com.github.salomonbrys.kodein.conf.ConfigurableKodein
 import com.github.salomonbrys.kodein.instance
 import com.github.salomonbrys.kodein.provider
 import com.github.salomonbrys.kodein.singleton
+import kodeinViewModelInjector.KodeinViewModelInjector
 import retrofit2.Retrofit
 
 class Injector(private val application: Application) {
+
+    init {
+        KodeinViewModelInjector.setContainerProvider { configurableGraph }
+    }
 
     fun reconfigureGraph(body: Kodein.Builder.() -> Unit) {
         dependencies = dependenciesBuilder()
@@ -45,10 +49,6 @@ class Injector(private val application: Application) {
         Kodein {
             bind<RandomFactViewModel>() with provider {
                 RandomFactViewModel(instance())
-            }
-
-            bind<SearchFactViewModel>() with provider {
-                SearchFactViewModel(instance(), instance(), instance())
             }
 
             bind<RandomFactRepository>() with singleton {

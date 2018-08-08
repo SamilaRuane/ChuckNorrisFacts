@@ -36,6 +36,8 @@ dependencies {
     implementation Groupie.base
     implementation Groupie.kotlinExtensions
 
+    implementation ViewModelInjector.base
+
     testImplementation UnitTest.jUnit
     testImplementation UnitTest.mockito
     androidTestImplementation AndroidTest.runner

@@ -13,16 +13,27 @@ import br.stone.mobiletraining.samilasantos.chucknorrisfacts.common.ErrorGroup
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.common.FactsGroup
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.common.InitialGroup
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.common.LoadingGroup
-import br.stone.mobiletraining.samilasantos.chucknorrisfacts.di.diInject
+import com.github.salomonbrys.kodein.bind
+import com.github.salomonbrys.kodein.instance
+import com.github.salomonbrys.kodein.provider
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
+import kodeinViewModelInjector.viewModelBinder
 import kotlinx.android.synthetic.main.activity_search_fact.*
 
 class SearchFactActivity : AppCompatActivity() {
 
-    private val viewModel by diInject<SearchFactViewModel>()
+    private val viewModel by viewModelBinder<SearchFactViewModel> {
+        bind() from provider {
+            SearchFactViewModel(
+                getFactByQuery = instance(),
+                calculateFontSize = instance(),
+                processCategoryBgColor = instance()
+            )
+        }
+    }
     private lateinit var disposable: Disposable
 
     private lateinit var groupAdapter: GroupAdapter<ViewHolder>
@@ -64,6 +75,7 @@ class SearchFactActivity : AppCompatActivity() {
     }
 
     private fun SearchFactContract.ViewState.render(adapter: GroupAdapter<ViewHolder>) {
+        viewModel.stateWasChanged(this)
         when (this) {
             is SearchFactContract.ViewState.WaitingForInput -> adapter.add(InitialGroup())
             is SearchFactContract.ViewState.Success -> adapter.renderSuccessState(this.facts)
