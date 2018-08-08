@@ -13,11 +13,10 @@ import kotlinx.android.synthetic.main.item_fact.*
 import kotlinx.android.synthetic.main.view_error.*
 
 class FactsGroup(private val fact: SearchFactContract.Item) : Item() {
-    private val regularSize = 14
-    private val largerSize = 16
 
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.apply {
+            val context = itemView.context
             textFactDescription.text = fact.description
             textCategory.text = fact.category
             textCategory.setBackgroundColor(
@@ -27,7 +26,9 @@ class FactsGroup(private val fact: SearchFactContract.Item) : Item() {
             )
             textFactDescription.setTextSize(
                 TypedValue.COMPLEX_UNIT_SP,
-                if (fact.fontSize == FactDescriptionFontSize.REGULAR) regularSize.toFloat() else largerSize.toFloat()
+                if (fact.fontSize == FactDescriptionFontSize.REGULAR)
+                    context.resources.getDimension(R.dimen.regular_font_size) / context.resources.displayMetrics.density
+                else context.resources.getDimension(R.dimen.larger_font_size) / context.resources.displayMetrics.density
             )
         }
     }
