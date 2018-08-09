@@ -26,10 +26,6 @@ class SearchFactViewModel(
         searchIntentObservable.onNext(query)
     }
 
-    fun stateWasChanged(viewState: SearchFactContract.ViewState) {
-        actualState = viewState
-    }
-
     fun observeState(): Observable<SearchFactContract.ViewState> = searchIntentObservable
         .throttleFirst(500, TimeUnit.MILLISECONDS)
         .switchMap {
@@ -63,4 +59,5 @@ class SearchFactViewModel(
                 .toObservable()
                 .startWith(SearchFactContract.ViewState.Loading)
         }.startWith(actualState)
+        .doOnNext { actualState = it }
 }

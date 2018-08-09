@@ -75,7 +75,6 @@ class SearchFactActivity : AppCompatActivity() {
     }
 
     private fun SearchFactContract.ViewState.render(adapter: GroupAdapter<ViewHolder>) {
-        viewModel.stateWasChanged(this)
         when (this) {
             is SearchFactContract.ViewState.WaitingForInput -> adapter.add(InitialGroup())
             is SearchFactContract.ViewState.Success -> adapter.renderSuccessState(this.facts)
