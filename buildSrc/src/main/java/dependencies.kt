@@ -24,6 +24,7 @@ const val KODEIN_VERSION = "4.1.0"
 const val GROUPIE_VERSION = "2.1.0"
 const val GRADLE_VERSION = "3.1.3"
 const val KOTLIN_LINT_VERSION = "1.15.1"
+const val VIEW_MODEL_INJECTOR_VERSION = "0.3.0"
 
 object Kotlin {
     val standardLibrary = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$KOTLIN_VERSION"
@@ -79,4 +80,8 @@ object ClasspathDependencies {
     val gradle = "com.android.tools.build:gradle:$GRADLE_VERSION"
     val kotlinPlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$KOTLIN_VERSION"
     val kotlinLintPlugin = "gradle.plugin.org.jmailen.gradle:kotlinter-gradle:$KOTLIN_LINT_VERSION"
+}
+
+object ViewModelInjector {
+    val base = "com.github.AllanHasegawa:kodein-viewmodel-injector:$VIEW_MODEL_INJECTOR_VERSION"
 }
