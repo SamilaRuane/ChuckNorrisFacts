@@ -19,17 +19,20 @@ class FactsGroup(private val fact: SearchFactContract.Item) : Item() {
             val context = itemView.context
             textFactDescription.text = fact.description
             textCategory.text = fact.category
-            textCategory.setBackgroundColor(
-                if (fact.categoryBgColor == CategoryBackgroundColor.GRAY)
-                    ContextCompat.getColor(itemView.context, R.color.category_gray_background)
-                else ContextCompat.getColor(itemView.context, R.color.category_blue_background)
-            )
+            textCategory.setBackgroundColor(when (fact.categoryBgColor) {
+                CategoryBackgroundColor.GRAY -> R.color.category_gray_background
+                CategoryBackgroundColor.BLUE -> R.color.category_blue_background
+            }.run {
+                ContextCompat.getColor(itemView.context, this)
+            })
+
             textFactDescription.setTextSize(
-                TypedValue.COMPLEX_UNIT_SP,
-                if (fact.fontSize == FactDescriptionFontSize.REGULAR)
-                    context.resources.getDimension(R.dimen.regular_font_size) / context.resources.displayMetrics.density
-                else context.resources.getDimension(R.dimen.larger_font_size) / context.resources.displayMetrics.density
-            )
+                TypedValue.COMPLEX_UNIT_PX, when (fact.fontSize) {
+                    FactDescriptionFontSize.REGULAR -> R.dimen.regular_font_size
+                    FactDescriptionFontSize.LARGER -> R.dimen.larger_font_size
+                }.run {
+                    context.resources.getDimension(this)
+                })
         }
     }
 
