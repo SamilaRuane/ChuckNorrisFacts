@@ -6,7 +6,6 @@ import br.stone.mobiletraining.samilasantos.chucknorrisfacts.App
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.screenRandomFact.RandomFactViewModel
 import br.stone.mobiletraining.samilasantos.data.service.common.RetrofitFactRepository
 import br.stone.mobiletraining.samilasantos.data.service.common.RetrofitManager
-import br.stone.mobiletraining.samilasantos.data.service.searchFact.MockSearchFactRepository
 import br.stone.mobiletraining.samilasantos.domain.randomFact.RandomFactRepository
 import br.stone.mobiletraining.samilasantos.domain.randomFact.uc.GetRandomFact
 import br.stone.mobiletraining.samilasantos.domain.searchFact.SearchFactRepository
@@ -64,7 +63,7 @@ class Injector(private val application: Application) {
             }
 
             bind<SearchFactRepository>() with singleton {
-                MockSearchFactRepository()
+                RetrofitFactRepository(instance())
             }
 
             bind<GetRandomFact>() with provider {
