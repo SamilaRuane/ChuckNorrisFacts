@@ -25,6 +25,7 @@ const val GROUPIE_VERSION = "2.1.0"
 const val GRADLE_VERSION = "3.1.3"
 const val KOTLIN_LINT_VERSION = "1.15.1"
 const val VIEW_MODEL_INJECTOR_VERSION = "0.3.0"
+const val BARISTA_VERSION = "2.4.0"
 
 object Kotlin {
     val standardLibrary = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$KOTLIN_VERSION"
@@ -84,4 +85,7 @@ object ClasspathDependencies {
 
 object ViewModelInjector {
     val base = "com.github.AllanHasegawa:kodein-viewmodel-injector:$VIEW_MODEL_INJECTOR_VERSION"
+}
+object Barista {
+    val base = "com.schibsted.spain:barista:$BARISTA_VERSION"
 }

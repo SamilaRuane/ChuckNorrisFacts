@@ -40,6 +40,11 @@ dependencies {
 
     testImplementation UnitTest.jUnit
     testImplementation UnitTest.mockito
+
+    androidTestImplementation(Barista.base) {
+        exclude group: 'com.android.support'
+        exclude group: 'org.jetbrains.kotlin'
+    }
     androidTestImplementation AndroidTest.runner
     androidTestImplementation AndroidTest.espresso
     androidTestImplementation AndroidTest.espressoIntents
