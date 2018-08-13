@@ -1,43 +1,66 @@
 package br.stone.mobiletraining.samilasantos.chucknorrisfacts.screenRandomFact
 
 import android.support.test.espresso.Espresso.onView
-import android.support.test.espresso.action.ViewActions
-import android.support.test.espresso.action.ViewActions.click
 import android.support.test.espresso.assertion.ViewAssertions.matches
+import android.support.test.espresso.intent.Intents.intended
+import android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent
 import android.support.test.espresso.matcher.ViewMatchers.isDisplayed
-import android.support.test.espresso.matcher.ViewMatchers.withId
 import android.support.test.espresso.matcher.ViewMatchers.withText
+import android.support.test.rule.ActivityTestRule
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.R
+import com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed
+import com.schibsted.spain.barista.interaction.BaristaClickInteractions.clickOn
+import org.junit.Rule
 
 object RandomFactActivityRobot {
 
+    @Rule
+    @JvmField
+    val activityRule =
+        ActivityTestRule<RandomFactActivity>(RandomFactActivity::class.java, false, false)
+
+    fun launchActivity(
+        func: RandomFactActivityRobot.() -> Unit
+    ) {
+        activityRule.launchActivity(null)
+        func.invoke(RandomFactActivityRobot)
+    }
+
     fun isFactVisible() {
-        onView(withId(R.id.viewSeparator)).check(matches(isDisplayed()))
-        onView(withId(R.id.textFactDescription)).check(matches(isDisplayed()))
+        assertDisplayed(R.id.viewSeparator)
+        assertDisplayed(R.id.textFactDescription)
     }
 
     fun isHeaderVisible() {
-        onView(withId(R.id.linearHeader)).check(matches(isDisplayed()))
-        onView(withId(R.id.imageChuck)).check(matches(isDisplayed()))
-        onView(withId(R.id.textChuckNorrisName)).check(matches(isDisplayed()))
-        onView(withId(R.id.quoteLeft)).check(matches(isDisplayed()))
-        onView(withId(R.id.quoteRight)).check(matches(isDisplayed()))
+        assertDisplayed(R.id.linearHeader)
+        assertDisplayed(R.id.imageChuck)
+        assertDisplayed(R.id.textChuckNorrisName)
+        assertDisplayed(R.id.quoteLeft)
+        assertDisplayed(R.id.quoteRight)
     }
 
     fun isUpdateIconVisible() {
-        onView(withId(R.id.iconSearch)).check(matches(isDisplayed()))
+        assertDisplayed(R.id.iconUpdate)
     }
 
     fun isSearchIconVisible() {
-        onView(withId(R.id.iconSearch)).check(matches(isDisplayed()))
+        assertDisplayed(R.id.iconSearch)
     }
 
     fun isShareIconVisible() {
-        onView(withId(R.id.iconShare)).check(matches(isDisplayed()))
+        assertDisplayed(R.id.iconShare)
     }
 
     fun clickOnUpdateButton() {
-        onView(withId(R.id.iconUpdate)).perform(ViewActions.click())
+        clickOn(R.id.iconUpdate)
+    }
+
+    fun clickOnSearchButton() {
+        clickOn(R.id.iconSearch)
+    }
+
+    fun verifyIfActivityWasLaunched(clazz: Class<*>) {
+        intended(hasComponent(clazz.name))
     }
 
     fun verifyIfTextMatches(text: String) {
@@ -45,6 +68,6 @@ object RandomFactActivityRobot {
     }
 
     fun closeDialog() {
-        onView(withId(android.R.id.button1)).perform(click())
+        clickOn(android.R.id.button1)
     }
 }
