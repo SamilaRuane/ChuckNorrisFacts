@@ -8,16 +8,11 @@ object SearchFactActivityMother {
 
     val noNetworkFeedback: () -> String = { getContext().getString(R.string.no_network_message) }
     val timeoutFeedback: () -> String = { getContext().getString(R.string.timeout_message) }
-    val infoNotFoundFeedback: () -> String =
-        { getContext().getString(R.string.query_not_match_message) }
-    val malformedQueryFeedback: () -> String =
-        { getContext().getString(R.string.malformed_query_message) }
-    val unavailableProviderFeedback: () -> String =
-        { getContext().getString(R.string.unavailable_provider_message) }
-    val unexpectedDataFeedback: () -> String =
-        { getContext().getString(R.string.unexpected_data_message) }
-    val queryNotMatchFeedback: () -> String =
-        { getContext().getString(R.string.query_not_match_message) }
+    val infoNotFoundFeedback: () -> String = { getContext().getString(R.string.query_not_match_message) }
+    val malformedQueryFeedback: () -> String = { getContext().getString(R.string.malformed_query_message) }
+    val unavailableProviderFeedback: () -> String = { getContext().getString(R.string.unavailable_provider_message) }
+    val unexpectedDataFeedback: () -> String = { getContext().getString(R.string.unexpected_data_message) }
+    val queryNotMatchFeedback: () -> String = { getContext().getString(R.string.query_not_match_message) }
     val successBody = """
         {
    "total":2,

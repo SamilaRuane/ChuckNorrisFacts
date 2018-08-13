@@ -79,15 +79,9 @@ class SearchFactActivity : AppCompatActivity() {
             is SearchFactContract.ViewState.WaitingForInput -> adapter.add(InitialGroup())
             is SearchFactContract.ViewState.Success -> adapter.renderSuccessState(this.facts)
             is SearchFactContract.ViewState.Loading -> adapter.renderLoadingState()
-            is SearchFactContract.ViewState.NoNetworkIssue -> adapter.renderStateWithRetryAndSettingsButton(
-                getString(R.string.no_network_message)
-            )
-            is SearchFactContract.ViewState.Timeout -> adapter.renderStateWithRetryAndSettingsButton(
-                getString(R.string.timeout_message)
-            )
-            is SearchFactContract.ViewState.UnavailableProvider -> adapter.renderErrorState(
-                getString(R.string.unavailable_provider_message)
-            )
+            is SearchFactContract.ViewState.NoNetworkIssue -> adapter.renderStateWithRetryAndSettingsButton(getString(R.string.no_network_message))
+            is SearchFactContract.ViewState.Timeout -> adapter.renderStateWithRetryAndSettingsButton(getString(R.string.timeout_message))
+            is SearchFactContract.ViewState.UnavailableProvider -> adapter.renderErrorState(getString(R.string.unavailable_provider_message))
             is SearchFactContract.ViewState.UnexpectedData -> adapter.renderErrorState(getString(R.string.unexpected_data_message))
             is SearchFactContract.ViewState.NoMatchQuery -> adapter.renderErrorState(getString(R.string.query_not_match_message))
             is SearchFactContract.ViewState.MalformedQuery -> adapter.renderErrorState(getString(R.string.malformed_query_message))

@@ -33,9 +33,8 @@ object Scenarios {
     }
 
     fun runWithLongTimeDurationRequest(test: () -> Unit) {
-        injector(
-            "http://127.0.1.1:1413/"
-        )
+        val randomIpAddress = "http://127.0.1.1:1413/"
+        injector(randomIpAddress)
         test.invoke()
     }
 

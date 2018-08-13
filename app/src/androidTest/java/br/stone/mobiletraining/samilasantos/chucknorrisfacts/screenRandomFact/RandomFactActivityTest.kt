@@ -1,8 +1,8 @@
 package br.stone.mobiletraining.samilasantos.chucknorrisfacts.screenRandomFact
 
 import android.support.test.runner.AndroidJUnit4
-import br.stone.mobiletraining.samilasantos.chucknorrisfacts.common.Scenarios
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.common.Scenarios.runWithError
+import br.stone.mobiletraining.samilasantos.chucknorrisfacts.common.Scenarios.runWithLongTimeDurationRequest
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.common.Scenarios.runWithNoNetwork
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.common.Scenarios.runWithSuccess
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.screenRandomFact.RandomFactActivityRobot.launchActivity
@@ -25,7 +25,7 @@ class RandomFactActivityTest {
 
     @Test
     fun given_a_timeout_error_then_verify_if_timeout_message_shown() {
-        Scenarios.runWithLongTimeDurationRequest {
+        runWithLongTimeDurationRequest {
             launchActivity {
                 clickOnUpdateButton()
                 verifyIfTextMatches(RandomFactActivityMother.timeoutFeedback())
