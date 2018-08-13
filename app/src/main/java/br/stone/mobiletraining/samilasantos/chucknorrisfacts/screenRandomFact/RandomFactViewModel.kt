@@ -2,11 +2,15 @@ package br.stone.mobiletraining.samilasantos.chucknorrisfacts.screenRandomFact
 
 import br.stone.mobiletraining.samilasantos.domain.randomFact.RandomFactResult
 import br.stone.mobiletraining.samilasantos.domain.randomFact.uc.GetRandomFact
+import br.stone.mobiletraining.samilasantos.domain.shareFact.FactSharer
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import java.util.concurrent.TimeUnit
 
-class RandomFactViewModel(private val getRandomFact: GetRandomFact) {
+class RandomFactViewModel(
+    private val getRandomFact: GetRandomFact,
+    private val factSharer: FactSharer
+) {
 
     private val updateIntentObservable = PublishSubject.create<Unit>()
 
@@ -27,4 +31,8 @@ class RandomFactViewModel(private val getRandomFact: GetRandomFact) {
                 .toObservable()
                 .startWith(RandomFactContract.ViewState.Loading)
         }
+
+    fun handleWithShareClick(fact: String) {
+        factSharer.share(fact)
+    }
 }

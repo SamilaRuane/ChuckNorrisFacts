@@ -30,7 +30,8 @@ class SearchFactActivity : AppCompatActivity() {
             SearchFactViewModel(
                 getFactByQuery = instance(),
                 calculateFontSize = instance(),
-                processCategoryBgColor = instance()
+                processCategoryBgColor = instance(),
+                factSharer = instance()
             )
         }
     }
@@ -126,7 +127,7 @@ class SearchFactActivity : AppCompatActivity() {
 
     private fun List<SearchFactContract.Item>.renderItems(): List<FactsGroup> =
         map {
-            FactsGroup(it)
+            FactsGroup(it, ::onShareClick)
         }
 
     private fun launchSettings() {
@@ -139,6 +140,10 @@ class SearchFactActivity : AppCompatActivity() {
         val inputMethodManager =
             getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(editSearchQuery.windowToken, 0)
+    }
+
+    private fun onShareClick(fact: String) {
+        viewModel.handleWithShareClick(fact)
     }
 
     override fun onStop() {

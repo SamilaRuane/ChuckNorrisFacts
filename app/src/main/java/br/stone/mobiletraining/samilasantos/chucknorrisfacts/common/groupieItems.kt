@@ -12,7 +12,10 @@ import kotlinx.android.synthetic.main.item_button.*
 import kotlinx.android.synthetic.main.item_fact.*
 import kotlinx.android.synthetic.main.view_error.*
 
-class FactsGroup(private val fact: SearchFactContract.Item) : Item() {
+class FactsGroup(
+    private val fact: SearchFactContract.Item,
+    private val onShareClick: (factDescription: String) -> Unit
+) : Item() {
 
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.apply {
@@ -33,6 +36,8 @@ class FactsGroup(private val fact: SearchFactContract.Item) : Item() {
                 }.run {
                     context.resources.getDimension(this)
                 })
+
+            imageIconShare.setOnClickListener { onShareClick(textFactDescription.text.toString()) }
         }
     }
 

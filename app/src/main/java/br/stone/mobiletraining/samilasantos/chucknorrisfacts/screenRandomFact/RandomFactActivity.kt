@@ -34,6 +34,7 @@ class RandomFactActivity : AppCompatActivity() {
     private fun defineIntents() {
         iconUpdate.setOnClickListener { viewModel.handleUpdateClick() }
         iconSearch.setOnClickListener { navigateToSearchFactScreen() }
+        iconShare.setOnClickListener { viewModel.handleWithShareClick(textFactDescription.text.toString()) }
     }
 
     private fun setupView() {
