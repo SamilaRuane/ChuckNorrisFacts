@@ -6,11 +6,25 @@ import android.support.test.espresso.intent.Intents.intended
 import android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent
 import android.support.test.espresso.matcher.ViewMatchers.isDisplayed
 import android.support.test.espresso.matcher.ViewMatchers.withText
+import android.support.test.rule.ActivityTestRule
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.R
 import com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed
 import com.schibsted.spain.barista.interaction.BaristaClickInteractions.clickOn
+import org.junit.Rule
 
 object RandomFactActivityRobot {
+
+    @Rule
+    @JvmField
+    val activityRule =
+        ActivityTestRule<RandomFactActivity>(RandomFactActivity::class.java, false, false)
+
+    fun launchActivity(
+        func: RandomFactActivityRobot.() -> Unit
+    ) {
+        activityRule.launchActivity(null)
+        func.invoke(RandomFactActivityRobot)
+    }
 
     fun isFactVisible() {
         assertDisplayed(R.id.viewSeparator)

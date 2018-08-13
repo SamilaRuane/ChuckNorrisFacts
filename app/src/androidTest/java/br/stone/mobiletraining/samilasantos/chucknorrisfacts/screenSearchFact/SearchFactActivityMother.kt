@@ -3,10 +3,6 @@ package br.stone.mobiletraining.samilasantos.chucknorrisfacts.screenSearchFact
 import android.content.Context
 import android.support.test.InstrumentationRegistry
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.R
-import br.stone.mobiletraining.samilasantos.domain.common.Fact
-import br.stone.mobiletraining.samilasantos.domain.common.NetworkIssues
-import br.stone.mobiletraining.samilasantos.domain.searchFact.SearchFactRepository
-import io.reactivex.Single
 
 object SearchFactActivityMother {
 
@@ -74,9 +70,4 @@ object SearchFactActivityMother {
     """.trimIndent()
 
     private fun getContext(): Context = InstrumentationRegistry.getTargetContext()
-
-    object MockRepository : SearchFactRepository {
-        override fun getFactsThatContains(query: String): Single<List<Fact>> = Single.error(
-            NetworkIssues.NoNetwork)
-    }
 }

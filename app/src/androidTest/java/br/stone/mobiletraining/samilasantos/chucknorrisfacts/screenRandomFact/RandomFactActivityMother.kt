@@ -4,6 +4,7 @@ import android.support.test.InstrumentationRegistry
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.R
 
 object RandomFactActivityMother {
+    val noNetworkFeedback: () -> String = { getContext().getString(R.string.no_network_message) }
     val timeoutFeedback: () -> String = { getContext().getString(R.string.timeout_message) }
     val unavailableProviderFeedback: () -> String =
         { getContext().getString(R.string.unavailable_provider_message) }
