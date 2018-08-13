@@ -4,10 +4,11 @@ import br.stone.mobiletraining.samilasantos.domain.common.NetworkIssues
 import io.reactivex.Single
 import io.reactivex.SingleSource
 import io.reactivex.SingleTransformer
-import java.net.ConnectException
-import java.net.UnknownHostException
 
-class HandleConnectionExceptions<T> : SingleTransformer<T, T> {
+class HandleConnectionExceptions<T>(
+    val isConnectionTimeout: (Throwable) -> Boolean,
+    val noInternetAvailable: (Throwable) -> Boolean
+) : SingleTransformer<T, T> {
     override fun apply(upstream: Single<T>): SingleSource<T> {
         return upstream.onErrorResumeNext(this::handleIfNetworkError)
     }
@@ -26,8 +27,4 @@ class HandleConnectionExceptions<T> : SingleTransformer<T, T> {
 
     private fun isNetworkError(error: Throwable) =
         isConnectionTimeout(error) || noInternetAvailable(error)
-
-    private fun isConnectionTimeout(error: Throwable) = error is ConnectException
-
-    private fun noInternetAvailable(error: Throwable) = error is UnknownHostException
 }

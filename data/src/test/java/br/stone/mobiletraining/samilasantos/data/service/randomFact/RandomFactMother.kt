@@ -10,7 +10,7 @@ object RandomFactMother {
         url = "https://api.chucknorris.io/jokes/0PlGg24YSX--haND5nj4Tw",
         category = "Uncategorized"
     )
-    val successbody = """
+    val successBody = """
         {
            "category":null,
            "icon_url":"https:\/\/assets.chucknorris.host\/img\/avatar\/chuck-norris.png",
