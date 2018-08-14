@@ -13,6 +13,6 @@ class AndroidShareHandler(private val application: Application) : ShareHandler {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK
         }
 
-        application.applicationContext.startActivity(sentIntent)
+        application.startActivity(sentIntent)
     }
 }
