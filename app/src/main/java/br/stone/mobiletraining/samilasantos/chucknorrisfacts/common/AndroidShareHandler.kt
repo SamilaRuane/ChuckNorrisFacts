@@ -8,11 +8,11 @@ class AndroidShareHandler(private val application: Application) : ShareHandler {
     override fun share(fact: String) {
         val sentIntent = Intent().apply {
             action = Intent.ACTION_SEND
-            putExtra(Intent.EXTRA_INTENT, fact)
+            putExtra(Intent.EXTRA_TEXT, fact)
             type = "text/plain"
             flags = Intent.FLAG_ACTIVITY_NEW_TASK
         }
 
-        application.startActivity(sentIntent)
+        application.applicationContext.startActivity(sentIntent)
     }
 }
