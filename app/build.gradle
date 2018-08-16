@@ -8,6 +8,10 @@ android.compileSdkVersion AndroidConfig.compileSdk
 android.defaultConfig.minSdkVersion AndroidConfig.minSdk
 android.defaultConfig.testInstrumentationRunner AndroidConfig.defaultTestRunner
 
+androidExtensions {
+    experimental = true
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':domain')
@@ -29,8 +33,18 @@ dependencies {
 
     implementation Retrofit.base
 
+    implementation Groupie.base
+    implementation Groupie.kotlinExtensions
+
+    implementation ViewModelInjector.base
+
     testImplementation UnitTest.jUnit
     testImplementation UnitTest.mockito
+
+    androidTestImplementation(Barista.base) {
+        exclude group: 'com.android.support'
+        exclude group: 'org.jetbrains.kotlin'
+    }
     androidTestImplementation AndroidTest.runner
     androidTestImplementation AndroidTest.espresso
     androidTestImplementation AndroidTest.espressoIntents

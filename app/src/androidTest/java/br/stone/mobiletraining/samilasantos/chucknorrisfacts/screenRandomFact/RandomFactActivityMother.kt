@@ -4,11 +4,10 @@ import android.support.test.InstrumentationRegistry
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.R
 
 object RandomFactActivityMother {
+    val noNetworkFeedback: () -> String = { getContext().getString(R.string.no_network_message) }
     val timeoutFeedback: () -> String = { getContext().getString(R.string.timeout_message) }
-    val unavailableProviderFeedback: () -> String =
-        { getContext().getString(R.string.unavailable_provider_message) }
-    val unexpectedDataFeedback: () -> String =
-        { getContext().getString(R.string.unexpected_data_message) }
+    val unavailableProviderFeedback: () -> String = { getContext().getString(R.string.unavailable_provider_message) }
+    val unexpectedDataFeedback: () -> String = { getContext().getString(R.string.unexpected_data_message) }
 
     const val fact =
         "Chuck Norris ride into town on Friday, stayed three Nights, the rode out again on Friday. On a horse named Steve."

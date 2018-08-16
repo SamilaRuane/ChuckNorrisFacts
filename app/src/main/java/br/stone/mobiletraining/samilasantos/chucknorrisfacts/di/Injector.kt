@@ -8,15 +8,24 @@ import br.stone.mobiletraining.samilasantos.data.service.common.RetrofitFactRepo
 import br.stone.mobiletraining.samilasantos.data.service.common.RetrofitManager
 import br.stone.mobiletraining.samilasantos.domain.randomFact.RandomFactRepository
 import br.stone.mobiletraining.samilasantos.domain.randomFact.uc.GetRandomFact
+import br.stone.mobiletraining.samilasantos.domain.searchFact.SearchFactRepository
+import br.stone.mobiletraining.samilasantos.domain.searchFact.uc.CalculateFactDescriptionFontSize
+import br.stone.mobiletraining.samilasantos.domain.searchFact.uc.GetFactByQuery
+import br.stone.mobiletraining.samilasantos.domain.searchFact.uc.ProcessCategoryBgColor
 import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.conf.ConfigurableKodein
 import com.github.salomonbrys.kodein.instance
 import com.github.salomonbrys.kodein.provider
 import com.github.salomonbrys.kodein.singleton
+import kodeinViewModelInjector.KodeinViewModelInjector
 import retrofit2.Retrofit
 
 class Injector(private val application: Application) {
+
+    init {
+        KodeinViewModelInjector.setContainerProvider { configurableGraph }
+    }
 
     fun reconfigureGraph(body: Kodein.Builder.() -> Unit) {
         dependencies = dependenciesBuilder()
@@ -53,8 +62,24 @@ class Injector(private val application: Application) {
                 RetrofitManager.buildRetrofit(instance())
             }
 
+            bind<SearchFactRepository>() with singleton {
+                RetrofitFactRepository(instance())
+            }
+
             bind<GetRandomFact>() with provider {
                 GetRandomFact(instance())
+            }
+
+            bind<GetFactByQuery>() with provider {
+                GetFactByQuery(instance())
+            }
+
+            bind<CalculateFactDescriptionFontSize>() with provider {
+                CalculateFactDescriptionFontSize()
+            }
+
+            bind<ProcessCategoryBgColor>() with provider {
+                ProcessCategoryBgColor()
             }
         }
     }
