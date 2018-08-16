@@ -1,9 +1,12 @@
 package br.stone.mobiletraining.samilasantos.chucknorrisfacts.screenSearchFact
 
+import android.content.Intent
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.action.ViewActions
 import android.support.test.espresso.action.ViewActions.typeText
 import android.support.test.espresso.assertion.ViewAssertions.matches
+import android.support.test.espresso.intent.Intents.intended
+import android.support.test.espresso.intent.matcher.IntentMatchers
 import android.support.test.espresso.matcher.ViewMatchers.isDisplayed
 import android.support.test.espresso.matcher.ViewMatchers.withId
 import android.support.test.espresso.matcher.ViewMatchers.withText
@@ -11,7 +14,9 @@ import android.support.test.rule.ActivityTestRule
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.R
 import com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed
 import com.schibsted.spain.barista.interaction.BaristaClickInteractions.clickOn
+import com.schibsted.spain.barista.interaction.BaristaListInteractions.clickListItemChild
 import com.schibsted.spain.barista.interaction.BaristaListInteractions.scrollListToPosition
+import org.hamcrest.CoreMatchers.equalTo
 import org.junit.Rule
 
 object SearchFactActivityRobot {
@@ -41,6 +46,10 @@ object SearchFactActivityRobot {
 
     fun clickOnSearchButton() {
         clickOn(R.id.imageIconSearch)
+    }
+
+    fun clickOnShareButton() {
+        clickListItemChild(R.id.recyclerFactsList, 0, R.id.imageIconShare)
     }
 
     fun checkIfListIsVisible() {
@@ -73,5 +82,9 @@ object SearchFactActivityRobot {
 
     fun verifyIfTextMatches(text: String) {
         onView(withText(text)).check(matches(isDisplayed()))
+    }
+
+    fun verifyIfActionSendIntentWasTriggered() {
+        intended(IntentMatchers.hasAction(equalTo(Intent.ACTION_SEND)))
     }
 }
