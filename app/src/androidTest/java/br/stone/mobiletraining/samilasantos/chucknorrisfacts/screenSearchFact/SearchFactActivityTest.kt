@@ -124,6 +124,18 @@ class SearchFactActivityTest {
         }
     }
 
+    @Test
+    fun given_an_share_icon_click_then_should_open_chooser() {
+        runWithSuccess(SearchFactActivityMother.successBody) {
+            launchActivity {
+                type("dev")
+                clickOnSearchButton()
+                clickOnShareButton()
+                verifyIfActionSendIntentWasTriggered()
+            }
+        }
+    }
+
     @After
     fun finish() {
         Intents.release()

@@ -1,16 +1,24 @@
 package br.stone.mobiletraining.samilasantos.chucknorrisfacts.screenRandomFact
 
+import android.support.test.espresso.intent.Intents
 import android.support.test.runner.AndroidJUnit4
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.common.Scenarios.runWithError
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.common.Scenarios.runWithLongTimeDurationRequest
-import br.stone.mobiletraining.samilasantos.chucknorrisfacts.common.Scenarios.runWithNoNetwork
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.common.Scenarios.runWithSuccess
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.screenRandomFact.RandomFactActivityRobot.launchActivity
+import br.stone.mobiletraining.samilasantos.chucknorrisfacts.screenSearchFact.SearchFactActivity
+import org.junit.After
+import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class RandomFactActivityTest {
+
+    @Before
+    fun init() {
+        Intents.init()
+    }
 
     @Test
     fun once_activity_has_launched_should_present_the_initial_state() {
@@ -68,13 +76,27 @@ class RandomFactActivityTest {
     }
 
     @Test
-    fun once_has_no_network_then_verify_if_no_network_exception_dialog_is_shown() {
-        runWithNoNetwork {
+    fun given_a_search_icon_click_then_verify_if_SearchFactActivity_was_launched() {
+        runWithSuccess(RandomFactActivityMother.successBody) {
             launchActivity {
-                clickOnUpdateButton()
-                verifyIfTextMatches(RandomFactActivityMother.noNetworkFeedback())
-                closeDialog()
+                clickOnSearchButton()
+                verifyIfActivityWasLaunched(SearchFactActivity::class.java)
             }
         }
+    }
+
+    @Test
+    fun given_a_share_icon_click_then_should_open_chooser() {
+        runWithSuccess(RandomFactActivityMother.successBody) {
+            launchActivity {
+                clickOnShareButton()
+                verifyIfActionSendIntentWasTriggered()
+            }
+        }
+    }
+
+    @After
+    fun finish() {
+        Intents.release()
     }
 }

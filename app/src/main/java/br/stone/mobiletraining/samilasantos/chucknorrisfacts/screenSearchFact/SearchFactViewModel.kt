@@ -8,6 +8,7 @@ import br.stone.mobiletraining.samilasantos.domain.searchFact.SearchFactExceptio
 import br.stone.mobiletraining.samilasantos.domain.searchFact.uc.CalculateFactDescriptionFontSize
 import br.stone.mobiletraining.samilasantos.domain.searchFact.uc.GetFactByQuery
 import br.stone.mobiletraining.samilasantos.domain.searchFact.uc.ProcessCategoryBgColor
+import br.stone.mobiletraining.samilasantos.domain.shareFact.FactSharer
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import java.util.concurrent.TimeUnit
@@ -15,7 +16,8 @@ import java.util.concurrent.TimeUnit
 class SearchFactViewModel(
     private val getFactByQuery: GetFactByQuery,
     private val calculateFontSize: CalculateFactDescriptionFontSize,
-    private val processCategoryBgColor: ProcessCategoryBgColor
+    private val processCategoryBgColor: ProcessCategoryBgColor,
+    private val factSharer: FactSharer
 ) : ViewModel() {
 
     private val searchIntentObservable = PublishSubject.create<String>()
@@ -60,4 +62,8 @@ class SearchFactViewModel(
                 .startWith(SearchFactContract.ViewState.Loading)
         }.startWith(actualState)
         .doOnNext { actualState = it }
+
+    fun handleWithShareClick(fact: String) {
+        factSharer.share(fact)
+    }
 }

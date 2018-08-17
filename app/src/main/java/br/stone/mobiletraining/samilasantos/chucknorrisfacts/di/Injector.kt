@@ -3,6 +3,7 @@ package br.stone.mobiletraining.samilasantos.chucknorrisfacts.di
 import android.app.Activity
 import android.app.Application
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.App
+import br.stone.mobiletraining.samilasantos.chucknorrisfacts.common.AndroidShareHandler
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.screenRandomFact.RandomFactViewModel
 import br.stone.mobiletraining.samilasantos.data.service.common.RetrofitFactRepository
 import br.stone.mobiletraining.samilasantos.data.service.common.RetrofitManager
@@ -12,6 +13,8 @@ import br.stone.mobiletraining.samilasantos.domain.searchFact.SearchFactReposito
 import br.stone.mobiletraining.samilasantos.domain.searchFact.uc.CalculateFactDescriptionFontSize
 import br.stone.mobiletraining.samilasantos.domain.searchFact.uc.GetFactByQuery
 import br.stone.mobiletraining.samilasantos.domain.searchFact.uc.ProcessCategoryBgColor
+import br.stone.mobiletraining.samilasantos.domain.shareFact.FactSharer
+import br.stone.mobiletraining.samilasantos.domain.shareFact.ShareHandler
 import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.conf.ConfigurableKodein
@@ -47,7 +50,7 @@ class Injector(private val application: Application) {
     private val dependenciesBuilder = {
         Kodein {
             bind<RandomFactViewModel>() with provider {
-                RandomFactViewModel(instance())
+                RandomFactViewModel(instance(), instance())
             }
 
             bind<RandomFactRepository>() with singleton {
@@ -80,6 +83,18 @@ class Injector(private val application: Application) {
 
             bind<ProcessCategoryBgColor>() with provider {
                 ProcessCategoryBgColor()
+            }
+
+            bind<FactSharer>() with provider {
+                FactSharer(instance())
+            }
+
+            bind<ShareHandler>() with provider {
+                AndroidShareHandler(instance())
+            }
+
+            bind<Application>() with singleton {
+                application
             }
         }
     }

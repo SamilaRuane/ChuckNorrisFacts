@@ -1,8 +1,10 @@
 package br.stone.mobiletraining.samilasantos.chucknorrisfacts.screenRandomFact
 
+import android.content.Intent
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.intent.Intents.intended
+import android.support.test.espresso.intent.matcher.IntentMatchers
 import android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent
 import android.support.test.espresso.matcher.ViewMatchers.isDisplayed
 import android.support.test.espresso.matcher.ViewMatchers.withText
@@ -10,6 +12,7 @@ import android.support.test.rule.ActivityTestRule
 import br.stone.mobiletraining.samilasantos.chucknorrisfacts.R
 import com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed
 import com.schibsted.spain.barista.interaction.BaristaClickInteractions.clickOn
+import org.hamcrest.CoreMatchers
 import org.junit.Rule
 
 object RandomFactActivityRobot {
@@ -55,6 +58,10 @@ object RandomFactActivityRobot {
         clickOn(R.id.iconUpdate)
     }
 
+    fun clickOnShareButton() {
+        clickOn(R.id.iconShare)
+    }
+
     fun clickOnSearchButton() {
         clickOn(R.id.iconSearch)
     }
@@ -69,5 +76,9 @@ object RandomFactActivityRobot {
 
     fun closeDialog() {
         clickOn(android.R.id.button1)
+    }
+
+    fun verifyIfActionSendIntentWasTriggered() {
+        intended(IntentMatchers.hasAction(CoreMatchers.equalTo(Intent.ACTION_SEND)))
     }
 }
