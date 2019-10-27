@@ -2,8 +2,7 @@
 
 Android repository for [Chuck Norris](https://api.chucknorris.io/) API
 
-This project is used to experiment some android 
-[Api Documentation](https://github.com/mvfsillva/dialetus-service#-api)
+This project is used to experiment some android libraries. 
 
 ## Building and Running
 
